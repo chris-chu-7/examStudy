@@ -513,7 +513,80 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navyblueloginbackground" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-5Y-KsU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jky-P6-nS7">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAI-gu-FQW">
+                                <rect key="frame" x="40" y="40" width="334" height="656"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxZ-DF-0GV">
+                                        <rect key="frame" x="99.666666666666671" y="618" width="135" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="BhY-bI-NMf"/>
+                                            <constraint firstAttribute="height" constant="30" id="UAd-Lk-xGj"/>
+                                        </constraints>
+                                        <state key="normal" title="Go Back" backgroundImage="examStudy Front Page">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goBack:" destination="I1H-3l-f49" eventType="touchUpInside" id="mwu-ao-xl9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RD4-4j-VRl">
+                                        <rect key="frame" x="296" y="8" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="LEt-K8-xCa"/>
+                                            <constraint firstAttribute="height" constant="30" id="u6P-Fc-9cd"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="settings"/>
+                                        <connections>
+                                            <action selector="goToSettings:" destination="I1H-3l-f49" eventType="touchUpInside" id="zaH-Tm-f8h"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRG-qI-hxL">
+                                        <rect key="frame" x="116" y="8" width="102" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="e5c-H5-EY7"/>
+                                            <constraint firstAttribute="width" constant="102" id="mZG-a9-T8t"/>
+                                        </constraints>
+                                        <state key="normal" title="Write a Review" backgroundImage="examStudy Front Page">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="review:" destination="I1H-3l-f49" eventType="touchUpInside" id="HTq-ap-q6W"/>
+                                        </connections>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nHN-GD-YOV">
+                                        <rect key="frame" x="22" y="46" width="288" height="549"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="gzR-Rf-8F6">
+                                                <rect key="frame" x="0.0" y="28" width="288" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gzR-Rf-8F6" id="xXH-fr-sgb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="43.666666666666664"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="I1H-3l-f49" id="cri-7B-hsA"/>
+                                            <outlet property="delegate" destination="I1H-3l-f49" id="7hD-z5-qAe"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="RD4-4j-VRl" secondAttribute="trailing" constant="8" id="1gM-LR-35k"/>
+                                    <constraint firstItem="ZxZ-DF-0GV" firstAttribute="top" secondItem="nHN-GD-YOV" secondAttribute="bottom" constant="23" id="3HE-Uk-yNU"/>
+                                    <constraint firstItem="nHN-GD-YOV" firstAttribute="top" secondItem="RD4-4j-VRl" secondAttribute="bottom" constant="8" id="5ZF-7N-nMp"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZxZ-DF-0GV" secondAttribute="bottom" constant="8" id="9ni-rm-klh"/>
+                                    <constraint firstItem="FRG-qI-hxL" firstAttribute="centerX" secondItem="MAI-gu-FQW" secondAttribute="centerX" id="Bzx-1Z-vgQ"/>
+                                    <constraint firstItem="RD4-4j-VRl" firstAttribute="top" secondItem="MAI-gu-FQW" secondAttribute="top" constant="8" id="I5o-4l-ZXM"/>
+                                    <constraint firstAttribute="trailing" secondItem="nHN-GD-YOV" secondAttribute="trailing" constant="24" id="J3A-4h-ER5"/>
+                                    <constraint firstItem="FRG-qI-hxL" firstAttribute="top" secondItem="MAI-gu-FQW" secondAttribute="top" constant="8" id="OX1-Nb-X7E"/>
+                                    <constraint firstItem="ZxZ-DF-0GV" firstAttribute="centerX" secondItem="MAI-gu-FQW" secondAttribute="centerX" id="QiY-9W-Myl"/>
+                                    <constraint firstItem="nHN-GD-YOV" firstAttribute="leading" secondItem="MAI-gu-FQW" secondAttribute="leading" constant="22" id="v9Z-ds-O1F"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jky-P6-nS7">
                                 <rect key="frame" x="40" y="40" width="334" height="676"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kP-WN-sTB">
@@ -588,79 +661,6 @@
                                     <constraint firstAttribute="trailing" secondItem="czL-kR-8cl" secondAttribute="trailing" constant="50" id="zh3-cD-C6X"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAI-gu-FQW">
-                                <rect key="frame" x="40" y="40" width="334" height="656"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxZ-DF-0GV">
-                                        <rect key="frame" x="99.666666666666671" y="618" width="135" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="135" id="BhY-bI-NMf"/>
-                                            <constraint firstAttribute="height" constant="30" id="UAd-Lk-xGj"/>
-                                        </constraints>
-                                        <state key="normal" title="Go Back" backgroundImage="examStudy Front Page">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="goBack:" destination="I1H-3l-f49" eventType="touchUpInside" id="mwu-ao-xl9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RD4-4j-VRl">
-                                        <rect key="frame" x="296" y="8" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="LEt-K8-xCa"/>
-                                            <constraint firstAttribute="height" constant="30" id="u6P-Fc-9cd"/>
-                                        </constraints>
-                                        <state key="normal" backgroundImage="settings"/>
-                                        <connections>
-                                            <action selector="goToSettings:" destination="I1H-3l-f49" eventType="touchUpInside" id="zaH-Tm-f8h"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRG-qI-hxL">
-                                        <rect key="frame" x="116" y="8" width="102" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="e5c-H5-EY7"/>
-                                            <constraint firstAttribute="width" constant="102" id="mZG-a9-T8t"/>
-                                        </constraints>
-                                        <state key="normal" title="Write a Review" backgroundImage="examStudy Front Page">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="review:" destination="I1H-3l-f49" eventType="touchUpInside" id="HTq-ap-q6W"/>
-                                        </connections>
-                                    </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nHN-GD-YOV">
-                                        <rect key="frame" x="22" y="46" width="288" height="549"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="gzR-Rf-8F6">
-                                                <rect key="frame" x="0.0" y="28" width="288" height="44"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gzR-Rf-8F6" id="xXH-fr-sgb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="43.666666666666664"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="I1H-3l-f49" id="cri-7B-hsA"/>
-                                            <outlet property="delegate" destination="I1H-3l-f49" id="7hD-z5-qAe"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="RD4-4j-VRl" secondAttribute="trailing" constant="8" id="1gM-LR-35k"/>
-                                    <constraint firstItem="ZxZ-DF-0GV" firstAttribute="top" secondItem="nHN-GD-YOV" secondAttribute="bottom" constant="23" id="3HE-Uk-yNU"/>
-                                    <constraint firstItem="nHN-GD-YOV" firstAttribute="top" secondItem="RD4-4j-VRl" secondAttribute="bottom" constant="8" id="5ZF-7N-nMp"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZxZ-DF-0GV" secondAttribute="bottom" constant="8" id="9ni-rm-klh"/>
-                                    <constraint firstItem="FRG-qI-hxL" firstAttribute="centerX" secondItem="MAI-gu-FQW" secondAttribute="centerX" id="Bzx-1Z-vgQ"/>
-                                    <constraint firstItem="RD4-4j-VRl" firstAttribute="top" secondItem="MAI-gu-FQW" secondAttribute="top" constant="8" id="I5o-4l-ZXM"/>
-                                    <constraint firstAttribute="trailing" secondItem="nHN-GD-YOV" secondAttribute="trailing" constant="24" id="J3A-4h-ER5"/>
-                                    <constraint firstItem="FRG-qI-hxL" firstAttribute="top" secondItem="MAI-gu-FQW" secondAttribute="top" constant="8" id="OX1-Nb-X7E"/>
-                                    <constraint firstItem="ZxZ-DF-0GV" firstAttribute="centerX" secondItem="MAI-gu-FQW" secondAttribute="centerX" id="QiY-9W-Myl"/>
-                                    <constraint firstItem="nHN-GD-YOV" firstAttribute="leading" secondItem="MAI-gu-FQW" secondAttribute="leading" constant="22" id="v9Z-ds-O1F"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -685,6 +685,7 @@
                         <outlet property="classRate" destination="MAI-gu-FQW" id="xom-9K-hbO"/>
                         <outlet property="flipCardButton" destination="ald-TA-QiM" id="d25-wq-8op"/>
                         <outlet property="goBackButton" destination="ZxZ-DF-0GV" id="Hbt-bv-Yw0"/>
+                        <outlet property="tableView" destination="nHN-GD-YOV" id="rBr-ze-3BT"/>
                         <segue destination="N8U-IN-YaI" kind="show" identifier="firstWindowToSettings" id="Myh-Bs-iS3"/>
                         <segue destination="sg0-h6-tho" kind="show" identifier="reviewClass" id="O5x-Nx-qJ1"/>
                     </connections>

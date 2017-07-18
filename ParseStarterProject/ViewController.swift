@@ -13,7 +13,7 @@ import Parse
 class ViewController: UIViewController {
     
     
-    @IBOutlet weak var goToSiteButton: UIButton! //button to go to the next pag
+    @IBOutlet weak var goToSiteButton: UIButton! //button to go to the next page
     
     @IBAction func buttonToSiteAction(_ sender: Any) {
         

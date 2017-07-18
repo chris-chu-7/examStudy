@@ -96,39 +96,40 @@ class ClassReviewViewController: UIViewController {
     
     
     @IBAction func submitReview(_ sender: Any) {
-        let query = PFQuery(className: "URLs")
-        query.whereKey("URL", equalTo: url.text!)
+        let query = PFQuery(className: "URLs") //look in the URL class
+        query.whereKey("URL", equalTo: url.text!) //make a query to see if the URL already exists
         query.getFirstObjectInBackground { (objects, error) in
             if error != nil{
                 //say the first object does not exist, then
                 let newURL = PFObject(className: "URLs")
-                newURL["URL"] = self.url.text
+                newURL["URL"] = self.url.text //make a new URL
                 //newURL["Course"] = self.classCode.text
                 newURL["ReviewNum"] = 1
-                newURL["powerScore"] = self.score
-                newURL.saveInBackground(block: { (success, error) in
+                newURL["powerScore"] = self.score //set the number of reviews of the new URL to 1 and the power score
+                                                    //to the initial powerScore
+                newURL.saveInBackground(block: { (success, error) in //save the new url
                     if error != nil{
                         print("did not save")
                     } else {
                         print("URL saved")
                     }
                 })
-            } else {
-                let object = objects?.objectId //retrieve the object id
+            } else { //if the url already exists
+                let object = objects?.objectId //retrieve the object id from the initial query
                 print(object!)
                 let query = PFQuery(className: "URLs")
-                query.getObjectInBackground(withId: object!, block: { (anobject, error) in
+                query.getObjectInBackground(withId: object!, block: { (anobject, error) in //set the object as avalable to mutate
                     if error != nil{
                         //print(error)
                     } else {
                         var count = anobject!["ReviewNum"] as! Int
                         count = count + 1
-                        anobject!["ReviewNum"] = count
-                        let newPowerScore = (anobject!["powerScore"] as! Int  * (count - 1) + self.score) / (count)
-                        anobject!["powerScore"] = newPowerScore
+                        anobject!["ReviewNum"] = count //temporary variable to increment the number of responses
+                        let newPowerScore = (anobject!["powerScore"] as! Int  * (count - 1) + self.score) / (count) //average out the powerScores
+                        anobject!["powerScore"] = newPowerScore //update the powerScore
                         anobject?.addObjects(from: [self.classCode.text!], forKey: "Classes")
                         
-                        anobject?.saveInBackground(block: { (success, error) in
+                        anobject?.saveInBackground(block: { (success, error) in //save all changes
                             if error != nil{
                                 print("Object is not saved.")
                             } else {

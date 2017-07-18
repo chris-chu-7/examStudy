@@ -17,9 +17,17 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var flipCardButton: UIButton! //button to flip fron classQuery to classRate
     @IBOutlet weak var goBackButton: UIButton! //button to flip fron classRate to classQuery
+    @IBOutlet weak var tableView: UITableView!
     
-    var classSuccess = false //placeholder to see if the class is found and to check if to move UIViews
+   // var classSuccess = false //placeholder to see if the class is found and to check if to move UIViews
     var classType = "" //placeholder variable for className
+    var classes = [String]()
+    var refreshControl: UIRefreshControl = UIRefreshControl()
+    
+    /*func refreshData(){
+        classes.append(" ")
+        refreshControl.endRefreshing()
+    }*/
     
     @IBAction func goToSettings(_ sender: Any) {
         performSegue(withIdentifier: "firstWindowToSettings", sender: self) //moves the user to the Settings Panel
@@ -31,8 +39,9 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        //efreshControl.addTarget(self, action: #selector(ViewController.refreshData), for: UIControlEvents.valueChanged)
+        //tableView.addSubview(refreshControl)
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +67,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
         //goBackButton.alpha = 0
         UIView.transition(from: classRate, to: classQuery, duration: 0.5, options: .transitionFlipFromLeft) //flip card again if user is in the table and wants to search for alternative classes
         //flipCardButton.alpha = 1
+        classQuery.alpha = 1
     }
     
     
@@ -71,21 +81,25 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func createClass(_ sender: Any) {
         
-        let query = PFQuery(className: "Classes")
-        query.whereKey("name", equalTo: className.text!)
+        let query = PFQuery(className: "Classes") //search in classes
+        query.whereKey("name", equalTo: className.text!) //see if there are any existing classes with the same class name
         query.getFirstObjectInBackground { (object, error) in
             if error != nil{
-                if self.className.text != ""{
-                    let newClass = PFObject(className: "Classes")
-                    newClass["name"] = self.className.text
-                    newClass.saveInBackground { (success, error) in
+                if self.className.text != ""{ //if the class is not found, then it can be created
+                    let newClass = PFObject(className: "Classes") //create a new object
+                    newClass["name"] = self.className.text //initialize the object's class name
+                    newClass.saveInBackground { (success, error) in //save the object
                         if error != nil{
-                            self.createAlert(title: "Error", message: "Class Creation Failed")
+                            self.createAlert(title: "Error", message: "Class Creation Failed") //print an error message if the class cannot be created
                         } else {
-                            self.createAlert(title: "Success", message: ":)")
-                            self.classSuccess = true
+                            self.createAlert(title: "Success", message: ":)") //else, if success, send the user a notification
+                            //self.classSuccess = true
                             //self.flipCardButton.alpha = 0
                             self.classQuery.alpha = 0
+                            
+                            /*
+                             the next three lines perform a transition between windows
+                             */
                             self.classRate.alpha = 1
                             UIView.transition(from: self.classQuery, to: self.classRate, duration: 0.5, options: .transitionFlipFromRight)
                             // self.goBackButton.alpha = 1
@@ -93,10 +107,10 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                     
                 } else {
-                    self.createAlert(title: "Error", message: "Class Creation Failed")
+                    self.createAlert(title: "Error", message: "Class Creation Failed") //print an error if the text field is left blank
                 }
             } else {
-                self.createAlert(title: "Error", message: "Class Creation Failed")
+                self.createAlert(title: "Error", message: "Class Creation Failed") //print an error if parseServer cannot be accessed
             }
         }
         
@@ -108,17 +122,37 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
  */
     @IBAction func searchClass(_ sender: Any) {
         
-        let query = PFQuery(className: "Classes")
-        query.whereKey("name", equalTo: className.text!)
+        let query = PFQuery(className: "Classes") //search in classes
+        query.whereKey("name", equalTo: className.text!) //see if there are any classes corresponding to what was put in the text field
         query.getFirstObjectInBackground { (object, error) in
             if error == nil{
-                self.createAlert(title: "Success", message: "Found query")
+                self.createAlert(title: "Success", message: "Found query") //indicate success
+               let query = PFQuery(className: "URLs") //now search the particular class name in the URLs
+               query.whereKey("Classes", contains: self.className.text!) //see if there are any URLs corresponding to the class arrays containing the URLs
+                query.order(byDescending: "powerScore") //now arrange these urls containing the class into a corresponding powerScore
+                query.findObjectsInBackground(block: { (objects, error) in
+                    if error != nil {
+                        self.createAlert(title: "Error", message: "Failed to load list") //if the objects can't be fetched,
+                                                                                        // print an error message
+                    } else {
+                        print("Objects should be retrieved") //debugger
+                        if let objects = objects{
+                            for object in objects{
+                                self.classes.append(object["URL"] as! String) //get all the objects arranged in order in an array to code to the table
+                            }
+                        }
+                        print(self.classes) //debugger
+                        self.tableView.reloadData() //reload the table dagta
+                        UIView.transition(from: self.classQuery, to: self.classRate, duration: 0.5, options: .transitionFlipFromRight) //if there is a success, change views
+                    }
+                })
             }
             else {
-                self.createAlert(title: "Error", message: "Cannot Find query")
+                self.createAlert(title: "Error", message: "Cannot Find query") //else, if no class of type exists, print an error message
             }
         }
     }
+    
     
     
     
@@ -139,16 +173,17 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 1
+        return classes.count //displays all the sources that are corresponding to a class
     }
     
     
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "tableCell")
-        cell.textLabel?.text = "It works!"
-        return cell
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "tableCell") //initialize a cell
+        cell.textLabel?.text = classes[indexPath.row] //the table cell contents are the courses for the URL sorted by powerScore
+        return cell //return the text content
     }
+    
     
 
 }
