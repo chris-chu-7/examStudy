@@ -23,7 +23,9 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     var classType = "" //placeholder variable for className
     var classes = [String]()
     var refreshControl: UIRefreshControl = UIRefreshControl()
-    var classExists = false
+    var classExists = true
+    var userClasses = ["eS"]
+    
     
     
     /*func refreshData(){
@@ -44,6 +46,9 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         //efreshControl.addTarget(self, action: #selector(ViewController.refreshData), for: UIControlEvents.valueChanged)
         //tableView.addSubview(refreshControl)
+        
+        PFUser.current()?["Courses"] = userClasses
+        userClasses = PFUser.current()?["Courses"] as! [String]
     }
 
     override func didReceiveMemoryWarning() {
@@ -177,9 +182,29 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func addClass(_ sender: Any) {
         
-        if classExists == true {
+        
+        let query = PFQuery(className: "Classes")
+        query.whereKey( "name", equalTo: className.text!)
+        query.getFirstObjectInBackground { (object, error) in
+            if error != nil {
+                self.createAlert(title: "Error", message: "Cannot add class to Student")
+            } else {
+                self.userClasses.append(self.className.text!)
+                PFUser.current()?["Courses"] =  self.userClasses
+                PFUser.current()?.saveInBackground(block: { (success, error) in
+                    if error != nil {
+                        self.createAlert(title: "Error", message: "Cannot add class to Student")
+                    }
+                        
+                    else{
+                        self.createAlert(title: "Success", message: "Class added")
+                    }
+                })
                 
+                
+            }
         }
+        
         
         
     }

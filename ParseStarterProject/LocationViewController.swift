@@ -15,20 +15,57 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
     
     //map imported
     @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var mileRange: UITextField!
     var userLatitude:Double = 0
     var userLongitude:Double = 0
-    
      let manager = CLLocationManager()
+    var location: CLLocation!
+    
+    @IBAction func classmateSearch(_ sender: Any) {
+        if let miles = Double(mileRange.text!){
+            let span = Double(miles * 0.02)
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span))
+            self.map.setRegion(region, animated: true)
+            self.map.showsUserLocation = true
+        }
+        
+        
+        
+        //create a query
+        let userGeoPoint = PFUser.current()?["Location"] as! PFGeoPoint
+        
+        if let miles = Double(mileRange.text!){
+            let span = Double(miles * 0.01)
+        let northEastPoint = PFGeoPoint(latitude: location.coordinate.latitude + span, longitude: location.coordinate.longitude + span)
+        let southWestPoint = PFGeoPoint(latitude: location.coordinate.latitude - span, longitude: location.coordinate.longitude - span)
+        
+        let query = PFQuery(className: "User")
+        query.whereKey("Location", withinGeoBoxFromSouthwest: southWestPoint, toNortheast: northEastPoint)
+            query.findObjectsInBackground(block: { (objects, error) in
+                if error != nil {
+                    self.createAlert(title: "Error", message: "Cannot find People at this time")
+                } else {
+                    self.createAlert(title: "Success", message: "This people thing works!")
+                    
+                    
+                    if let object = objects{
+                        for object in objects!{
+                            print(object.objectId)
+                        }
+                    }
+                    
+                    
+                }
+            })
+        }
+        
+    }
+    
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0] //update user's most recent position
-        userLatitude = Double(location.coordinate.latitude)
-        userLongitude = Double(location.coordinate.longitude)
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        map.setRegion(region, animated: true)
-        self.map.showsUserLocation = true
+        self.location = locations.last as! CLLocation
     }
     
     
@@ -48,13 +85,16 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
     }
     
     @IBAction func shareLocation(_ sender: Any) {
+        userLatitude = location.coordinate.latitude
+        userLongitude = location.coordinate.longitude
+        
         let point = PFGeoPoint(latitude: userLatitude, longitude: userLongitude)
         PFUser.current()?["Location"] = point
         PFUser.current()?.saveInBackground(block: { (success, error) in
             if error != nil {
                 self.createAlert(title: "Error", message: "Failed to save location.")
             } else {
-                self.createAlert(title: "Successs", message: "Location updated.")
+                self.createAlert(title: "Success", message: "Location updated.")
             }
         })
         print("Location shared")
