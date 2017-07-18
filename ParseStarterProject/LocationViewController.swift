@@ -33,15 +33,15 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
         
         
         //create a query
-        let userGeoPoint = PFUser.current()?["Location"] as! PFGeoPoint
         
         if let miles = Double(mileRange.text!){
             let span = Double(miles * 0.01)
-        let northEastPoint = PFGeoPoint(latitude: location.coordinate.latitude + span, longitude: location.coordinate.longitude + span)
-        let southWestPoint = PFGeoPoint(latitude: location.coordinate.latitude - span, longitude: location.coordinate.longitude - span)
+        let northEastPoint = PFGeoPoint(latitude: location.coordinate.latitude + 45, longitude: location.coordinate.longitude + 45)
+        let southWestPoint = PFGeoPoint(latitude: location.coordinate.latitude - 45, longitude: location.coordinate.longitude - 45)
+            let userGeoPoint = PFGeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         
         let query = PFQuery(className: "User")
-        query.whereKey("Location", withinGeoBoxFromSouthwest: southWestPoint, toNortheast: northEastPoint)
+            query.whereKey("Location", nearGeoPoint: userGeoPoint)
             query.findObjectsInBackground(block: { (objects, error) in
                 if error != nil {
                     self.createAlert(title: "Error", message: "Cannot find People at this time")
@@ -49,10 +49,11 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
                     self.createAlert(title: "Success", message: "This people thing works!")
                     
                     
-                    if let object = objects{
+                    if let object = objects{/*
                         for object in objects!{
                             print(object.objectId)
-                        }
+                        }*/
+                        print(objects?.count)
                     }
                     
                     
