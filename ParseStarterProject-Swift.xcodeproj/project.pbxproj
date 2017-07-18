@@ -18,6 +18,8 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		C4064B6A1F142EE6001FAAD0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4064B691F142EE6001FAAD0 /* SignUpViewController.swift */; };
+		C42C50471F1E7A820073D3CF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C50461F1E7A820073D3CF /* LocationViewController.swift */; };
+		C42C50491F1E7B630073D3CF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42C50481F1E7B550073D3CF /* CoreLocation.framework */; };
 		C46592C41F12D25F00F7B163 /* WelcomeToLoginSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46592C31F12D25F00F7B163 /* WelcomeToLoginSegue.swift */; };
 		C46592C61F13EFCE00F7B163 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46592C51F13EFCE00F7B163 /* LoginViewController.swift */; };
 		C4BEB6221F180E8D008ED38E /* classDecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEB6211F180E8D008ED38E /* classDecisionViewController.swift */; };
@@ -41,6 +43,8 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		C4064B691F142EE6001FAAD0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C42C50461F1E7A820073D3CF /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		C42C50481F1E7B550073D3CF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C46592C31F12D25F00F7B163 /* WelcomeToLoginSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeToLoginSegue.swift; sourceTree = "<group>"; };
 		C46592C51F13EFCE00F7B163 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4BEB6211F180E8D008ED38E /* classDecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classDecisionViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C42C50491F1E7B630073D3CF /* CoreLocation.framework in Frameworks */,
 				81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */,
 				81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */,
 				81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */,
@@ -103,6 +108,7 @@
 				C4BEB6211F180E8D008ED38E /* classDecisionViewController.swift */,
 				C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */,
 				C4BEB6231F182B8E008ED38E /* SettingsTableViewController.swift */,
+				C42C50461F1E7A820073D3CF /* LocationViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 			);
 			path = ParseStarterProject;
@@ -111,6 +117,7 @@
 		81BA816A1A49DB5600E65899 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C42C50481F1E7B550073D3CF /* CoreLocation.framework */,
 				81BA816B1A49DB6800E65899 /* Bolts.framework */,
 				81BA816C1A49DB6800E65899 /* Parse.framework */,
 				81BA816E1A49DB6800E65899 /* ParseFacebookUtils.framework */,
@@ -209,6 +216,7 @@
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				C46592C41F12D25F00F7B163 /* WelcomeToLoginSegue.swift in Sources */,
+				C42C50471F1E7A820073D3CF /* LocationViewController.swift in Sources */,
 				C4064B6A1F142EE6001FAAD0 /* SignUpViewController.swift in Sources */,
 				C4BEB6241F182B8E008ED38E /* SettingsTableViewController.swift in Sources */,
 			);

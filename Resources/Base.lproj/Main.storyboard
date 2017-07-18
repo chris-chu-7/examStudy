@@ -193,7 +193,7 @@
         <!--Study Finder-->
         <scene sceneID="vXn-CG-vF4">
             <objects>
-                <viewController id="soy-w1-MUq" sceneMemberID="viewController">
+                <viewController id="soy-w1-MUq" customClass="LocationViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XQZ-c3-Gu8"/>
                         <viewControllerLayoutGuide type="bottom" id="N2t-Sx-GkC"/>
@@ -228,11 +228,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4Y-xu-Ea0">
+                                <rect key="frame" x="106" y="599" width="203" height="30"/>
+                                <color key="backgroundColor" red="0.088085494935512543" green="0.51882743835449219" blue="0.98535090684890747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="203" id="9eZ-5H-9sC"/>
+                                    <constraint firstAttribute="height" constant="30" id="NkX-8h-8FT"/>
+                                </constraints>
+                                <state key="normal" title="Share Location">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareLocation:" destination="soy-w1-MUq" eventType="touchUpInside" id="Pvp-Gq-K7I"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XmD-ec-PAB" firstAttribute="top" secondItem="XQZ-c3-Gu8" secondAttribute="bottom" constant="29" id="APq-er-DcQ"/>
                             <constraint firstItem="rJL-wz-9To" firstAttribute="leading" secondItem="vfg-uN-N8Q" secondAttribute="leadingMargin" constant="10" id="KiU-yP-adC"/>
+                            <constraint firstItem="I4Y-xu-Ea0" firstAttribute="top" secondItem="rJL-wz-9To" secondAttribute="bottom" constant="8" id="MJk-OH-gTE"/>
+                            <constraint firstItem="I4Y-xu-Ea0" firstAttribute="centerX" secondItem="vfg-uN-N8Q" secondAttribute="centerX" id="d1I-Ea-x7x"/>
                             <constraint firstItem="XmD-ec-PAB" firstAttribute="leading" secondItem="vfg-uN-N8Q" secondAttribute="leadingMargin" constant="10" id="dVA-bu-x5G"/>
                             <constraint firstItem="zl5-XQ-N0N" firstAttribute="leading" secondItem="vfg-uN-N8Q" secondAttribute="leading" id="f3N-hy-kmI"/>
                             <constraint firstItem="CYI-4a-HvO" firstAttribute="top" secondItem="XmD-ec-PAB" secondAttribute="bottom" constant="8" id="fbX-vn-VFG"/>
@@ -247,10 +263,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Study Finder" id="j2g-95-7cp"/>
+                    <connections>
+                        <outlet property="map" destination="rJL-wz-9To" id="62R-HP-eh0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6S-dh-ezL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2824.8000000000002" y="-1111.3943028485758"/>
+            <point key="canvasLocation" x="2824.6376811594205" y="-1111.9565217391305"/>
         </scene>
         <!--Class Review View Controller-->
         <scene sceneID="nSn-uP-zPb">
