@@ -23,6 +23,8 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     var classType = "" //placeholder variable for className
     var classes = [String]()
     var refreshControl: UIRefreshControl = UIRefreshControl()
+    var classExists = false
+    
     
     /*func refreshData(){
         classes.append(" ")
@@ -101,6 +103,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
                              the next three lines perform a transition between windows
                              */
                             self.classRate.alpha = 1
+                            self.classExists = true
                             UIView.transition(from: self.classQuery, to: self.classRate, duration: 0.5, options: .transitionFlipFromRight)
                             // self.goBackButton.alpha = 1
                         }
@@ -171,6 +174,16 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
         self.present(alert, animated: true, completion: nil)
         
     }
+    
+    @IBAction func addClass(_ sender: Any) {
+        
+        if classExists == true {
+                
+        }
+        
+        
+    }
+    
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return classes.count //displays all the sources that are corresponding to a class

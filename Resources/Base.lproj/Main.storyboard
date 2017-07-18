@@ -663,6 +663,20 @@
                                             <action selector="flipCard:" destination="I1H-3l-f49" eventType="touchUpInside" id="jAM-qs-53n"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLN-0i-cvn">
+                                        <rect key="frame" x="8" y="8" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="r3G-Y9-MWB"/>
+                                            <constraint firstAttribute="height" constant="30" id="wtw-G3-bXW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="+" backgroundImage="navyblueloginbackground">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addClass:" destination="I1H-3l-f49" eventType="touchUpInside" id="Y9C-ee-Hn5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -670,8 +684,10 @@
                                     <constraint firstItem="tyb-TH-yS1" firstAttribute="top" secondItem="czL-kR-8cl" secondAttribute="bottom" constant="8" id="2Y0-1b-Ge7"/>
                                     <constraint firstItem="5kP-WN-sTB" firstAttribute="top" secondItem="jky-P6-nS7" secondAttribute="top" constant="8" id="JdT-eh-2Sq"/>
                                     <constraint firstItem="czL-kR-8cl" firstAttribute="leading" secondItem="jky-P6-nS7" secondAttribute="leading" constant="49" id="OjI-r6-9uB"/>
+                                    <constraint firstItem="aLN-0i-cvn" firstAttribute="leading" secondItem="jky-P6-nS7" secondAttribute="leading" constant="8" id="Tnc-ao-B7j"/>
                                     <constraint firstItem="ald-TA-QiM" firstAttribute="top" secondItem="DfW-zt-aw1" secondAttribute="bottom" constant="8" id="Yse-pW-Abb"/>
                                     <constraint firstItem="DfW-zt-aw1" firstAttribute="top" secondItem="tyb-TH-yS1" secondAttribute="bottom" constant="8" id="ck8-Ft-7pF"/>
+                                    <constraint firstItem="aLN-0i-cvn" firstAttribute="top" secondItem="jky-P6-nS7" secondAttribute="top" constant="8" id="ctG-Pm-oiM"/>
                                     <constraint firstItem="czL-kR-8cl" firstAttribute="top" secondItem="jky-P6-nS7" secondAttribute="top" constant="49" id="hgh-t9-JoG"/>
                                     <constraint firstItem="tyb-TH-yS1" firstAttribute="leading" secondItem="jky-P6-nS7" secondAttribute="leading" constant="84" id="hh8-KR-i2q"/>
                                     <constraint firstAttribute="trailing" secondItem="tyb-TH-yS1" secondAttribute="trailing" constant="84" id="nT2-Tk-U9c"/>

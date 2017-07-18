@@ -146,6 +146,9 @@ class ClassReviewViewController: UIViewController {
         
     }
     
+    
+    
+    
     @IBAction func gotoSettings(_ sender: Any) {
         performSegue(withIdentifier: "rateToSettings", sender: self) //go to the settings when the settings button is hit
     }
