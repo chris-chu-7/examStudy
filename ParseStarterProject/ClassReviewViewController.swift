@@ -155,6 +155,7 @@ class ClassReviewViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         hourStudy.resignFirstResponder() //when the screen is touched, get rid of the keyboard
+        classCode.resignFirstResponder()
     }
     
 }

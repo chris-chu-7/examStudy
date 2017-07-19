@@ -11,8 +11,7 @@ import Parse
 
 class SettingsTableViewController: UITableViewController {
     
-    var pets = ["Log Out", "cat", "rabbit"]
-    var petDesc = ["bones", "fish", "carrots"]
+    var settings = ["Help", "Log Out"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +33,14 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return pets.count
+        return settings.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = pets[indexPath.row]
+        cell.textLabel?.text = settings[indexPath.row]
 
         // Configure the cell...
 
@@ -49,7 +48,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.row == 0{
+    if indexPath.row == 1{
         PFUser.logOut()
         performSegue(withIdentifier: "logout", sender: self)
     }

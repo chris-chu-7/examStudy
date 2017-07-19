@@ -21,6 +21,11 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
      let manager = CLLocationManager()
     var location: CLLocation!
     
+    @IBAction func goToSettings(_ sender: Any) {
+        performSegue(withIdentifier: "mapToSettings", sender: self)
+    }
+    
+    
     @IBAction func classmateSearch(_ sender: Any) {
         if let miles = Double(mileRange.text!){
             let span = Double(miles * 0.02)
@@ -30,36 +35,24 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
             self.map.showsUserLocation = true
         }
         
-        
-        
-        //create a query
-        
-        if let miles = Double(mileRange.text!){
-            let span = Double(miles * 0.01)
-        let northEastPoint = PFGeoPoint(latitude: location.coordinate.latitude + 45, longitude: location.coordinate.longitude + 45)
-        let southWestPoint = PFGeoPoint(latitude: location.coordinate.latitude - 45, longitude: location.coordinate.longitude - 45)
-            let userGeoPoint = PFGeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        
-        let query = PFQuery(className: "User")
-            query.whereKey("Location", nearGeoPoint: userGeoPoint)
-            query.findObjectsInBackground(block: { (objects, error) in
+        //This is a query to attempt to find Geopoints
+        if let locations = manager.location?.coordinate{
+            let studentsNearMeQuery = PFUser.query()
+            studentsNearMeQuery?.whereKey("Location", nearGeoPoint: PFGeoPoint(latitude: locations.latitude, longitude: locations.longitude))
+            
+            studentsNearMeQuery?.findObjectsInBackground(block: { (objects, error) in
                 if error != nil {
-                    self.createAlert(title: "Error", message: "Cannot find People at this time")
+                    self.createAlert(title: "Error", message: "Cannot find students")
                 } else {
-                    self.createAlert(title: "Success", message: "This people thing works!")
-                    
-                    
-                    if let object = objects{/*
-                        for object in objects!{
-                            print(object.objectId)
-                        }*/
-                        print(objects?.count)
+                    if let object = objects{
+                        for one in object{
+                            print(one.objectId)
+                        }
                     }
-                    
-                    
                 }
             })
         }
+        
         
     }
     
@@ -67,6 +60,7 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.location = locations.last as! CLLocation
+        
     }
     
     
@@ -101,6 +95,11 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
         print("Location shared")
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        mileRange.resignFirstResponder() //when the screen is touched, get rid of the keyboard
+    }
+    
     
     /*
      This create alert method presents an alert with a title presented on the top and message on the bottom,
