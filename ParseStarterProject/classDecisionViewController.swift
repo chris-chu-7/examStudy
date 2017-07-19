@@ -210,15 +210,20 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        className.resignFirstResponder()
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return classes.count //displays all the sources that are corresponding to a class
     }
     
     
     
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "tableCell") //initialize a cell
-        cell.textLabel?.text = classes[indexPath.row] //the table cell contents are the courses for the URL sorted by powerScore
+        cell.textLabel?.text = String(indexPath.row + 1) + ". " + classes[indexPath.row] //the table cell contents are the courses for the URL sorted by powerScore
         return cell //return the text content
     }
     

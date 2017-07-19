@@ -103,7 +103,7 @@ class ClassReviewViewController: UIViewController {
                 //say the first object does not exist, then
                 let newURL = PFObject(className: "URLs")
                 newURL["URL"] = self.url.text //make a new URL
-                //newURL["Course"] = self.classCode.text
+                newURL["Course"] = self.classCode.text
                 newURL["ReviewNum"] = 1
                 newURL["powerScore"] = self.score //set the number of reviews of the new URL to 1 and the power score
                                                     //to the initial powerScore
@@ -148,10 +148,10 @@ class ClassReviewViewController: UIViewController {
     
     
     
-    
     @IBAction func gotoSettings(_ sender: Any) {
         performSegue(withIdentifier: "rateToSettings", sender: self) //go to the settings when the settings button is hit
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         hourStudy.resignFirstResponder() //when the screen is touched, get rid of the keyboard

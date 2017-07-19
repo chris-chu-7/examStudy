@@ -11,7 +11,7 @@ import Parse
 
 class SettingsTableViewController: UITableViewController {
     
-    var settings = ["Help","Edit Profile","Log Out"] //array that has every aspect of the tableView
+    var settings = ["Help","Edit Profile", "Home Page", "Log Out"] //array that has every aspect of the tableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,8 @@ class SettingsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,16 +55,12 @@ class SettingsTableViewController: UITableViewController {
             performSegue(withIdentifier: "logout", sender: self) //if the last button is clicked, logout and move to the start screen.
         }
     
+        if indexPath.row == settings.count - 2{
+            performSegue(withIdentifier: "settingsToHome", sender: self) //go back to the home page
+        }
+    
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     
 
