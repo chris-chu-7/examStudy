@@ -16,6 +16,8 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
     //map imported
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var mileRange: UITextField!
+    @IBOutlet weak var classCode: UITextField!
+    
     var userLatitude:Double = 0
     var userLongitude:Double = 0
      let manager = CLLocationManager()
@@ -46,7 +48,20 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
                 } else {
                     if let object = objects{
                         for one in object{
-                            print(one.objectId)
+                            
+                            let annotation = MKPointAnnotation()
+                            annotation.coordinate = CLLocationCoordinate2D(latitude: (one["Location"] as AnyObject).latitude, longitude: (one["Location"] as AnyObject).longitude)
+                            annotation.title = (one["username"] as! String)
+                            
+                            
+                            annotation.subtitle = ("No number")
+                            
+                            if (one["phoneNumber"] as? String != nil){
+                                if one["phoneNumber"] as! String != ""{
+                                    annotation.subtitle = (one["phoneNumber"] as! String)
+                                }
+                            }
+                            self.map.addAnnotation(annotation)
                         }
                     }
                 }
@@ -98,6 +113,7 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         mileRange.resignFirstResponder() //when the screen is touched, get rid of the keyboard
+        classCode.resignFirstResponder()
     }
     
     

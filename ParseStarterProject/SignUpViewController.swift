@@ -19,6 +19,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBOutlet weak var profilePicture: UIImageView! //the user's profile picture
     
+    @IBOutlet weak var phoneNumber: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +72,10 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             if error != nil{
                 self.createAlert(title: "Error", message: "Cannot Sign up at this time") //display an error message if the sign up failed
             } else {
-                print("Signed Up :)")
+                self.createAlert(title: "Success", message: "User signed up")
+                
+                PFUser.current()?["phoneNumber"] = self.phoneNumber.text
+                
                 PFUser.current()?["isParent"] = self.studentOrParent.isOn //upload the is student/parent information on the parse server
                 
               let imageData = UIImagePNGRepresentation(self.profilePicture.image!)
@@ -115,6 +120,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     func dismissKeyboard(){
         usernameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
+        phoneNumber.resignFirstResponder()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

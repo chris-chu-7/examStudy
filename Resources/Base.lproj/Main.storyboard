@@ -304,6 +304,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Study Finder" id="j2g-95-7cp"/>
                     <connections>
+                        <outlet property="classCode" destination="XmD-ec-PAB" id="fkE-US-rtX"/>
                         <outlet property="map" destination="rJL-wz-9To" id="62R-HP-eh0"/>
                         <outlet property="mileRange" destination="PcM-V5-vrB" id="DB3-HP-djW"/>
                         <segue destination="N8U-IN-YaI" kind="show" identifier="mapToSettings" id="CDx-NK-OMk"/>
@@ -931,6 +932,15 @@
                                 <color key="textColor" red="0.98535090680000004" green="0.46617431440000001" blue="0.40261495149999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="otD-SD-yjz">
+                                <rect key="frame" x="95" y="228" width="225" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="iu6-vh-RJD"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -951,7 +961,9 @@
                             <constraint firstItem="X0c-8B-G0h" firstAttribute="top" secondItem="oe8-Mz-31h" secondAttribute="bottom" constant="8" id="MIp-A4-CfB"/>
                             <constraint firstItem="gTs-Ph-wsY" firstAttribute="top" secondItem="SRP-H6-aK8" secondAttribute="bottom" constant="20" id="PWA-kJ-bWH"/>
                             <constraint firstItem="R5V-Wa-WZ9" firstAttribute="top" secondItem="X0c-8B-G0h" secondAttribute="bottom" constant="8" id="Tpw-OV-uVJ"/>
+                            <constraint firstItem="otD-SD-yjz" firstAttribute="top" secondItem="wT9-st-ktd" secondAttribute="bottom" constant="8" id="aGK-Iv-pYB"/>
                             <constraint firstAttribute="trailing" secondItem="Np1-VP-R8s" secondAttribute="trailing" id="bag-sN-AhI"/>
+                            <constraint firstItem="otD-SD-yjz" firstAttribute="leading" secondItem="HnY-G0-nzC" secondAttribute="leadingMargin" constant="75" id="d2B-YD-7H6"/>
                             <constraint firstItem="wT9-st-ktd" firstAttribute="top" secondItem="R5V-Wa-WZ9" secondAttribute="bottom" constant="8" id="gKa-co-rII"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tX4-5T-V3T" secondAttribute="trailing" constant="59" id="ggh-X9-5UR"/>
                             <constraint firstItem="wT9-st-ktd" firstAttribute="leading" secondItem="dIy-UL-nGK" secondAttribute="trailing" constant="21" id="glI-mr-hD6"/>
@@ -963,11 +975,13 @@
                             <constraint firstItem="tX4-5T-V3T" firstAttribute="top" secondItem="ZrM-yv-qJ1" secondAttribute="bottom" constant="46" id="nzM-EY-3hJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oe8-Mz-31h" secondAttribute="trailing" constant="59" id="qgK-ju-v9U"/>
                             <constraint firstItem="g4H-kz-Xor" firstAttribute="top" secondItem="HnY-G0-nzC" secondAttribute="top" id="rJb-3C-8nN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="otD-SD-yjz" secondAttribute="trailing" constant="74" id="swn-Ji-e5Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SRP-H6-aK8" secondAttribute="trailing" constant="59" id="t3s-Hf-H9w"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="X0c-8B-G0h" id="jyG-lf-DR9"/>
+                        <outlet property="phoneNumber" destination="otD-SD-yjz" id="Ngx-g2-GYh"/>
                         <outlet property="profilePicture" destination="ZrM-yv-qJ1" id="CmO-CK-kUE"/>
                         <outlet property="studentOrParent" destination="wT9-st-ktd" id="O6c-Ni-gwP"/>
                         <outlet property="usernameTextField" destination="oe8-Mz-31h" id="qpv-XU-f1R"/>
@@ -977,7 +991,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHP-hR-Luw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2648.8000000000002" y="-338.68065967016497"/>
+            <point key="canvasLocation" x="2647.826086956522" y="-339.13043478260875"/>
         </scene>
     </scenes>
     <resources>
@@ -992,8 +1006,8 @@
         <image name="transparent_text_effect" width="1448" height="185"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CDx-NK-OMk"/>
-        <segue reference="ceN-gv-X1Z"/>
         <segue reference="ALx-Fb-x1v"/>
+        <segue reference="dxB-Lf-YeM"/>
+        <segue reference="CDx-NK-OMk"/>
     </inferredMetricsTieBreakers>
 </document>
