@@ -31,7 +31,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                                               //while the connection is loading up
         PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!, block: { (user, error) in
             if error != nil{
-                print(error) //debugger
                 self.activityIndicator.stopAnimating() //if there is an error, allow the user to try again
                 self.createAlert(title: "Error", message: "Cannot Log In.")
                 UIApplication.shared.endIgnoringInteractionEvents() //allow the user to interact with the screen again

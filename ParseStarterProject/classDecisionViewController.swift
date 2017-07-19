@@ -183,15 +183,16 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func addClass(_ sender: Any) {
         
         
-        let query = PFQuery(className: "Classes")
-        query.whereKey( "name", equalTo: className.text!)
+        let query = PFQuery(className: "Classes") //query to search the classes
+        query.whereKey("name", equalTo: className.text!) //query to search anything equal to the class's name
         query.getFirstObjectInBackground { (object, error) in
             if error != nil {
-                self.createAlert(title: "Error", message: "Cannot add class to Student")
+                self.createAlert(title: "Error", message: "Cannot add class to Student") //if class name is not found, the student cannot be add the class
+                
             } else {
-                self.userClasses.append(self.className.text!)
-                PFUser.current()?["Courses"] =  self.userClasses
-                PFUser.current()?.saveInBackground(block: { (success, error) in
+                self.userClasses.append(self.className.text!) //otherwise, add all the user classes to the array
+                PFUser.current()?["Courses"] =  self.userClasses //put the classes array back with the user
+                PFUser.current()?.saveInBackground(block: { (success, error) in //try to save the parse
                     if error != nil {
                         self.createAlert(title: "Error", message: "Cannot add class to Student")
                     }
@@ -200,7 +201,6 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
                         self.createAlert(title: "Success", message: "Class added")
                     }
                 })
-                
                 
             }
         }

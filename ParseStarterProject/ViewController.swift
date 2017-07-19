@@ -17,12 +17,13 @@ class ViewController: UIViewController {
     
     @IBAction func buttonToSiteAction(_ sender: Any) {
         
+        //this is the button that sends the user to the login window
         
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("the app is ready")
+        print("the app is ready") //debugger message to notify the user the app is ready
         // Do any additional setup after loading the view, typically from a nib.
     }
 

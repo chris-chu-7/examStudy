@@ -11,7 +11,7 @@ import Parse
 
 class SettingsTableViewController: UITableViewController {
     
-    var settings = ["Help", "Log Out"]
+    var settings = ["Help","Edit Profile","Log Out"] //array that has every aspect of the tableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +33,14 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return settings.count
+        return settings.count //display all of the settings aspects in the array
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = settings[indexPath.row]
+        cell.textLabel?.text = settings[indexPath.row] //put the array text in the table view controller
 
         // Configure the cell...
 
@@ -48,10 +48,10 @@ class SettingsTableViewController: UITableViewController {
     }
     
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.row == 1{
-        PFUser.logOut()
-        performSegue(withIdentifier: "logout", sender: self)
-    }
+        if indexPath.row == settings.count - 1{
+            PFUser.logOut()
+            performSegue(withIdentifier: "logout", sender: self) //if the last button is clicked, logout and move to the start screen.
+        }
     
     }
     

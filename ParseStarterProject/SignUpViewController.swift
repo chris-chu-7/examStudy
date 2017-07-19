@@ -119,7 +119,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     func dismissKeyboard(){
         usernameTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder() //dismissess all the text fields
         phoneNumber.resignFirstResponder()
     }
     
