@@ -16,7 +16,6 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var className: UITextField! //bar for the user to search for a particular class
     
     @IBOutlet weak var flipCardButton: UIButton! //button to flip fron classQuery to classRate
-    @IBOutlet weak var goBackButton: UIButton! //button to flip fron classRate to classQuery
     @IBOutlet weak var tableView: UITableView!
     
    // var classSuccess = false //placeholder to see if the class is found and to check if to move UIViews
@@ -25,6 +24,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var classExists = true
     var userClasses = ["eS"]
+    var link = " "
     
     
     
@@ -139,6 +139,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
                                                                                         // print an error message
                     } else {
                         print("Objects should be retrieved") //debugger
+                        self.tableView.alpha = 1
                         if let objects = objects{
                             for object in objects{
                                 self.classes.append(object["URL"] as! String) //get all the objects arranged in order in an array to code to the table
@@ -209,6 +210,16 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
         className.resignFirstResponder()
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toWebView"{
+            
+           let webController = segue.destination as! WebViewController
+            webController.myString = link
+            
+        }
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return classes.count //displays all the sources that are corresponding to a class
     }
@@ -220,6 +231,14 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "tableCell") //initialize a cell
         cell.textLabel?.text = String(indexPath.row + 1) + ". " + classes[indexPath.row] //the table cell contents are the courses for the URL sorted by powerScore
         return cell //return the text content
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //selects a row
+        link = classes[indexPath.row]
+        performSegue(withIdentifier: "toWebView", sender: self)
     }
     
     

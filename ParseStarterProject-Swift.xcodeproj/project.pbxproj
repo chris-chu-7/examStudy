@@ -26,6 +26,7 @@
 		C4BEB6221F180E8D008ED38E /* classDecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEB6211F180E8D008ED38E /* classDecisionViewController.swift */; };
 		C4BEB6241F182B8E008ED38E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEB6231F182B8E008ED38E /* SettingsTableViewController.swift */; };
 		C4C28E5C1F1AA227005EEFEA /* ClassReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */; };
+		C4C4D0151F2129130023158D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4D0141F2129130023158D /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		C4BEB6211F180E8D008ED38E /* classDecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classDecisionViewController.swift; sourceTree = "<group>"; };
 		C4BEB6231F182B8E008ED38E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassReviewViewController.swift; sourceTree = "<group>"; };
+		C4C4D0141F2129130023158D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				C4BEB6231F182B8E008ED38E /* SettingsTableViewController.swift */,
 				C42C50461F1E7A820073D3CF /* LocationViewController.swift */,
 				C466BB891F2027CC00522275 /* HelpViewController.swift */,
+				C4C4D0141F2129130023158D /* WebViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 			);
 			path = ParseStarterProject;
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C46592C61F13EFCE00F7B163 /* LoginViewController.swift in Sources */,
+				C4C4D0151F2129130023158D /* WebViewController.swift in Sources */,
 				C4C28E5C1F1AA227005EEFEA /* ClassReviewViewController.swift in Sources */,
 				C4BEB6221F180E8D008ED38E /* classDecisionViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
