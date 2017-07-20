@@ -18,6 +18,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var flipCardButton: UIButton! //button to flip fron classQuery to classRate
     @IBOutlet weak var tableView: UITableView!
     
+    
    // var classSuccess = false //placeholder to see if the class is found and to check if to move UIViews
     var classType = "" //placeholder variable for className
     var classes = [String]()

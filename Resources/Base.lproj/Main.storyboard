@@ -215,7 +215,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navyblueloginbackground" translatesAutoresizingMaskIntoConstraints="NO" id="zl5-XQ-N0N">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYI-4a-HvO">
                                 <rect key="frame" x="114.66666666666669" y="87" width="185" height="30"/>
@@ -232,7 +232,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rJL-wz-9To">
-                                <rect key="frame" x="30" y="125" width="354" height="466"/>
+                                <rect key="frame" x="30" y="125" width="354" height="417"/>
                             </mapView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search a class code here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XmD-ec-PAB">
                                 <rect key="frame" x="30" y="49" width="354" height="30"/>
@@ -244,7 +244,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4Y-xu-Ea0">
-                                <rect key="frame" x="106" y="599" width="203" height="30"/>
+                                <rect key="frame" x="106" y="550" width="203" height="30"/>
                                 <color key="backgroundColor" red="0.088085494935512543" green="0.51882743835449219" blue="0.98535090684890747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="203" id="9eZ-5H-9sC"/>
@@ -258,7 +258,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100.0" borderStyle="roundedRect" placeholder="Enter Mile Range Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PcM-V5-vrB">
-                                <rect key="frame" x="66" y="686" width="283" height="30"/>
+                                <rect key="frame" x="66" y="637" width="283" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="zeN-gS-9Yq"/>
                                 </constraints>
@@ -577,24 +577,72 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt3-er-8cr">
-                                <rect key="frame" x="20" y="69" width="374" height="647"/>
+                                <rect key="frame" x="20" y="203" width="374" height="513"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N1J-nx-n9m">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="r4B-zF-yyk"/>
+                                </constraints>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjv-hj-HI1">
+                                <rect key="frame" x="184" y="7" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="399-s1-Aw6"/>
+                                    <constraint firstAttribute="height" constant="30" id="hRx-pa-kQY"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="eWx-rc-s0X" eventType="touchUpInside" id="O8X-RP-Mgc"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="auY-KN-sea">
+                                <rect key="frame" x="20" y="46" width="374" height="88"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="EO1-jY-XPb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy This:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44l-ye-KGb">
+                                <rect key="frame" x="148.66666666666669" y="142" width="117.00000000000006" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="VFZ-vy-hbF"/>
+                                    <constraint firstAttribute="height" constant="21" id="zYH-AB-AoQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CPx-Xc-9ru" firstAttribute="leading" secondItem="Q7P-jK-CFg" secondAttribute="leading" id="3DD-bh-7Dz"/>
-                            <constraint firstItem="9Gr-h4-nJa" firstAttribute="top" secondItem="tt3-er-8cr" secondAttribute="bottom" constant="20" id="JAQ-jh-TcL"/>
-                            <constraint firstItem="tt3-er-8cr" firstAttribute="trailing" secondItem="Q7P-jK-CFg" secondAttribute="trailingMargin" id="MHd-VQ-eLn"/>
-                            <constraint firstItem="tt3-er-8cr" firstAttribute="top" secondItem="iPS-ge-bTx" secondAttribute="bottom" constant="49" id="Vef-ht-bWa"/>
-                            <constraint firstItem="tt3-er-8cr" firstAttribute="leading" secondItem="Q7P-jK-CFg" secondAttribute="leadingMargin" id="dbA-0w-dwx"/>
+                            <constraint firstItem="N1J-nx-n9m" firstAttribute="top" secondItem="Q7P-jK-CFg" secondAttribute="top" id="4EG-q7-41E"/>
+                            <constraint firstItem="9Gr-h4-nJa" firstAttribute="top" secondItem="tt3-er-8cr" secondAttribute="bottom" constant="20" id="9L2-A5-gxv"/>
+                            <constraint firstItem="auY-KN-sea" firstAttribute="top" secondItem="N1J-nx-n9m" secondAttribute="bottom" constant="2" id="JIW-Xs-qlf"/>
+                            <constraint firstItem="44l-ye-KGb" firstAttribute="centerX" secondItem="Q7P-jK-CFg" secondAttribute="centerX" id="OHH-7T-Edd"/>
+                            <constraint firstItem="tt3-er-8cr" firstAttribute="leading" secondItem="Q7P-jK-CFg" secondAttribute="leadingMargin" id="RL8-y3-ZZV"/>
+                            <constraint firstItem="tt3-er-8cr" firstAttribute="trailing" secondItem="Q7P-jK-CFg" secondAttribute="trailingMargin" id="UE9-KS-BhS"/>
+                            <constraint firstItem="auY-KN-sea" firstAttribute="trailing" secondItem="Q7P-jK-CFg" secondAttribute="trailingMargin" id="c6A-zX-8d3"/>
+                            <constraint firstItem="44l-ye-KGb" firstAttribute="top" secondItem="auY-KN-sea" secondAttribute="bottom" constant="8" id="drE-Zp-Cwr"/>
                             <constraint firstAttribute="trailing" secondItem="CPx-Xc-9ru" secondAttribute="trailing" id="eas-jW-jmE"/>
+                            <constraint firstItem="N1J-nx-n9m" firstAttribute="leading" secondItem="Q7P-jK-CFg" secondAttribute="leading" id="hAU-vs-3YA"/>
+                            <constraint firstAttribute="trailing" secondItem="N1J-nx-n9m" secondAttribute="trailing" id="iVP-gj-jJg"/>
                             <constraint firstItem="CPx-Xc-9ru" firstAttribute="top" secondItem="Q7P-jK-CFg" secondAttribute="top" id="s26-cF-mbf"/>
+                            <constraint firstItem="Bjv-hj-HI1" firstAttribute="top" secondItem="Q7P-jK-CFg" secondAttribute="top" constant="7" id="uVF-Mc-BH4"/>
+                            <constraint firstItem="Bjv-hj-HI1" firstAttribute="centerX" secondItem="Q7P-jK-CFg" secondAttribute="centerX" id="ul9-ZE-wr2"/>
+                            <constraint firstItem="tt3-er-8cr" firstAttribute="top" secondItem="auY-KN-sea" secondAttribute="bottom" constant="69" id="wzJ-oc-uow"/>
+                            <constraint firstItem="auY-KN-sea" firstAttribute="leading" secondItem="Q7P-jK-CFg" secondAttribute="leadingMargin" id="y34-ZG-lOV"/>
                             <constraint firstItem="9Gr-h4-nJa" firstAttribute="top" secondItem="CPx-Xc-9ru" secondAttribute="bottom" id="yBY-aF-hhE"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="URL" destination="tt3-er-8cr" id="H7k-Ud-Urj"/>
+                        <outlet property="URLWindow" destination="tt3-er-8cr" id="ksU-wd-PMj"/>
+                        <outlet property="link" destination="auY-KN-sea" id="wLh-7T-XtD"/>
+                        <segue destination="Jc8-Ue-cVF" kind="show" identifier="backFromURL" id="QRH-C5-tEx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp3-qS-Jmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -614,7 +662,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navyblueloginbackground" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-5Y-KsU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAI-gu-FQW">
                                 <rect key="frame" x="40" y="40" width="334" height="656"/>
@@ -675,7 +723,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jky-P6-nS7">
-                                <rect key="frame" x="40" y="40" width="334" height="676"/>
+                                <rect key="frame" x="40" y="40" width="334" height="627"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kP-WN-sTB">
                                         <rect key="frame" x="296" y="8" width="30" height="30"/>
@@ -1241,9 +1289,9 @@
         <image name="transparent_text_effect" width="1448" height="185"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7vv-RK-CeU"/>
-        <segue reference="Myh-Bs-iS3"/>
+        <segue reference="QRH-C5-tEx"/>
         <segue reference="riH-GR-XGk"/>
+        <segue reference="euW-w1-3Xe"/>
         <segue reference="ALx-Fb-x1v"/>
     </inferredMetricsTieBreakers>
 </document>
