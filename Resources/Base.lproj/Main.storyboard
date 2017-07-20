@@ -579,19 +579,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAI-gu-FQW">
                                 <rect key="frame" x="40" y="40" width="334" height="656"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxZ-DF-0GV">
-                                        <rect key="frame" x="99.666666666666671" y="618" width="135" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="135" id="BhY-bI-NMf"/>
-                                            <constraint firstAttribute="height" constant="30" id="UAd-Lk-xGj"/>
-                                        </constraints>
-                                        <state key="normal" title="Go Back" backgroundImage="examStudy Front Page">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="goBack:" destination="I1H-3l-f49" eventType="touchUpInside" id="mwu-ao-xl9"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RD4-4j-VRl">
                                         <rect key="frame" x="296" y="8" width="30" height="30"/>
                                         <constraints>
@@ -616,7 +603,7 @@
                                             <action selector="review:" destination="I1H-3l-f49" eventType="touchUpInside" id="HTq-ap-q6W"/>
                                         </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nHN-GD-YOV">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nHN-GD-YOV">
                                         <rect key="frame" x="22" y="46" width="288" height="549"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -638,14 +625,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="RD4-4j-VRl" secondAttribute="trailing" constant="8" id="1gM-LR-35k"/>
-                                    <constraint firstItem="ZxZ-DF-0GV" firstAttribute="top" secondItem="nHN-GD-YOV" secondAttribute="bottom" constant="23" id="3HE-Uk-yNU"/>
                                     <constraint firstItem="nHN-GD-YOV" firstAttribute="top" secondItem="RD4-4j-VRl" secondAttribute="bottom" constant="8" id="5ZF-7N-nMp"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZxZ-DF-0GV" secondAttribute="bottom" constant="8" id="9ni-rm-klh"/>
                                     <constraint firstItem="FRG-qI-hxL" firstAttribute="centerX" secondItem="MAI-gu-FQW" secondAttribute="centerX" id="Bzx-1Z-vgQ"/>
                                     <constraint firstItem="RD4-4j-VRl" firstAttribute="top" secondItem="MAI-gu-FQW" secondAttribute="top" constant="8" id="I5o-4l-ZXM"/>
                                     <constraint firstAttribute="trailing" secondItem="nHN-GD-YOV" secondAttribute="trailing" constant="24" id="J3A-4h-ER5"/>
                                     <constraint firstItem="FRG-qI-hxL" firstAttribute="top" secondItem="MAI-gu-FQW" secondAttribute="top" constant="8" id="OX1-Nb-X7E"/>
-                                    <constraint firstItem="ZxZ-DF-0GV" firstAttribute="centerX" secondItem="MAI-gu-FQW" secondAttribute="centerX" id="QiY-9W-Myl"/>
                                     <constraint firstItem="nHN-GD-YOV" firstAttribute="leading" secondItem="MAI-gu-FQW" secondAttribute="leading" constant="22" id="v9Z-ds-O1F"/>
                                 </constraints>
                             </view>
@@ -763,7 +747,6 @@
                         <outlet property="classQuery" destination="jky-P6-nS7" id="ddE-Zg-set"/>
                         <outlet property="classRate" destination="MAI-gu-FQW" id="xom-9K-hbO"/>
                         <outlet property="flipCardButton" destination="ald-TA-QiM" id="d25-wq-8op"/>
-                        <outlet property="goBackButton" destination="ZxZ-DF-0GV" id="Hbt-bv-Yw0"/>
                         <outlet property="tableView" destination="nHN-GD-YOV" id="rBr-ze-3BT"/>
                         <segue destination="N8U-IN-YaI" kind="show" identifier="firstWindowToSettings" id="Myh-Bs-iS3"/>
                         <segue destination="sg0-h6-tho" kind="show" identifier="reviewClass" id="O5x-Nx-qJ1"/>
@@ -799,11 +782,87 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="logout" id="i6S-Fc-fkk"/>
                         <segue destination="Jc8-Ue-cVF" kind="show" identifier="settingsToHome" id="7vv-RK-CeU"/>
+                        <segue destination="Tvn-Lw-hh9" kind="show" identifier="settingsToHelp" id="KFp-Oa-rI2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxN-rb-6Ry" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4740" y="-1686"/>
+        </scene>
+        <!--Help View Controller-->
+        <scene sceneID="2sg-JY-K9u">
+            <objects>
+                <viewController id="Tvn-Lw-hh9" customClass="HelpViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GW6-st-qI1"/>
+                        <viewControllerLayoutGuide type="bottom" id="GEY-6H-YmQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C5z-hI-5Qs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="48U-Ts-FeI">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kz4-TW-Wrz">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="examStudy Front Page" translatesAutoresizingMaskIntoConstraints="NO" id="pZI-uk-Tgo">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFy-06-wwv">
+                                                <rect key="frame" x="137" y="28" width="141" height="30"/>
+                                                <color key="backgroundColor" red="0.98535090680000004" green="0.44798880088529025" blue="0.90994877208882929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="HHU-up-Ka4"/>
+                                                    <constraint firstAttribute="width" constant="141" id="ml1-kL-H6i"/>
+                                                </constraints>
+                                                <state key="normal" title="Back to Settings">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="backButton:" destination="Tvn-Lw-hh9" eventType="touchUpInside" id="K7z-dh-Zp0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1000" id="HFH-Rk-w5L"/>
+                                            <constraint firstItem="wFy-06-wwv" firstAttribute="top" secondItem="kz4-TW-Wrz" secondAttribute="top" constant="28" id="Uid-oM-tDY"/>
+                                            <constraint firstItem="pZI-uk-Tgo" firstAttribute="top" secondItem="kz4-TW-Wrz" secondAttribute="top" id="cCc-zt-fWw"/>
+                                            <constraint firstAttribute="bottom" secondItem="pZI-uk-Tgo" secondAttribute="bottom" id="e1K-Fy-k1S"/>
+                                            <constraint firstItem="wFy-06-wwv" firstAttribute="centerX" secondItem="kz4-TW-Wrz" secondAttribute="centerX" id="lc7-od-O9s"/>
+                                            <constraint firstAttribute="trailing" secondItem="pZI-uk-Tgo" secondAttribute="trailing" id="sJ4-Fq-jzK"/>
+                                            <constraint firstItem="pZI-uk-Tgo" firstAttribute="leading" secondItem="kz4-TW-Wrz" secondAttribute="leading" id="t8b-k4-M4t"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kz4-TW-Wrz" firstAttribute="top" secondItem="48U-Ts-FeI" secondAttribute="top" id="879-hC-owD"/>
+                                    <constraint firstItem="kz4-TW-Wrz" firstAttribute="leading" secondItem="48U-Ts-FeI" secondAttribute="leading" id="Cho-qB-VbF"/>
+                                    <constraint firstAttribute="bottom" secondItem="kz4-TW-Wrz" secondAttribute="bottom" id="QIt-Jo-Cmj"/>
+                                    <constraint firstAttribute="trailing" secondItem="kz4-TW-Wrz" secondAttribute="trailing" id="wEg-p2-nBX"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kz4-TW-Wrz" firstAttribute="width" secondItem="C5z-hI-5Qs" secondAttribute="width" id="63t-1X-IXg"/>
+                            <constraint firstItem="GEY-6H-YmQ" firstAttribute="top" secondItem="48U-Ts-FeI" secondAttribute="bottom" id="GUN-h8-fEf"/>
+                            <constraint firstItem="48U-Ts-FeI" firstAttribute="leading" secondItem="C5z-hI-5Qs" secondAttribute="leading" id="OHP-J6-RBE"/>
+                            <constraint firstItem="48U-Ts-FeI" firstAttribute="top" secondItem="C5z-hI-5Qs" secondAttribute="top" id="jeu-Or-Y8W"/>
+                            <constraint firstAttribute="trailing" secondItem="48U-Ts-FeI" secondAttribute="trailing" id="vhe-vO-Zob"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="414" height="1000"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <segue destination="N8U-IN-YaI" kind="show" identifier="helpToSettings" id="euW-w1-3Xe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nnp-Xt-ScM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5628.985507246377" y="-1687.5000000000002"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="r0I-89-uL1">
@@ -1008,9 +1067,9 @@
         <image name="transparent_text_effect" width="1448" height="185"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ALx-Fb-x1v"/>
-        <segue reference="Myh-Bs-iS3"/>
-        <segue reference="ndD-Na-9QV"/>
         <segue reference="7vv-RK-CeU"/>
+        <segue reference="euW-w1-3Xe"/>
+        <segue reference="riH-GR-XGk"/>
+        <segue reference="ALx-Fb-x1v"/>
     </inferredMetricsTieBreakers>
 </document>

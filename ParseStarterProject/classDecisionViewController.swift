@@ -70,12 +70,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     
-    @IBAction func goBack(_ sender: Any) {
-        //goBackButton.alpha = 0
-        UIView.transition(from: classRate, to: classQuery, duration: 0.5, options: .transitionFlipFromLeft) //flip card again if user is in the table and wants to search for alternative classes
-        //flipCardButton.alpha = 1
-        classQuery.alpha = 1
-    }
+
     
     
     /*
