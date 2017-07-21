@@ -27,6 +27,7 @@
 		C4BEB6241F182B8E008ED38E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEB6231F182B8E008ED38E /* SettingsTableViewController.swift */; };
 		C4C28E5C1F1AA227005EEFEA /* ClassReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */; };
 		C4C4D0151F2129130023158D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4D0141F2129130023158D /* WebViewController.swift */; };
+		C4C4D0171F214DD60023158D /* updateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4D0161F214DD50023158D /* updateProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		C4BEB6231F182B8E008ED38E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassReviewViewController.swift; sourceTree = "<group>"; };
 		C4C4D0141F2129130023158D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		C4C4D0161F214DD50023158D /* updateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				C42C50461F1E7A820073D3CF /* LocationViewController.swift */,
 				C466BB891F2027CC00522275 /* HelpViewController.swift */,
 				C4C4D0141F2129130023158D /* WebViewController.swift */,
+				C4C4D0161F214DD50023158D /* updateProfileViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 			);
 			path = ParseStarterProject;
@@ -225,6 +228,7 @@
 				C46592C41F12D25F00F7B163 /* WelcomeToLoginSegue.swift in Sources */,
 				C42C50471F1E7A820073D3CF /* LocationViewController.swift in Sources */,
 				C4064B6A1F142EE6001FAAD0 /* SignUpViewController.swift in Sources */,
+				C4C4D0171F214DD60023158D /* updateProfileViewController.swift in Sources */,
 				C4BEB6241F182B8E008ED38E /* SettingsTableViewController.swift in Sources */,
 				C466BB8A1F2027CC00522275 /* HelpViewController.swift in Sources */,
 			);

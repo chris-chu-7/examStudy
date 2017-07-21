@@ -21,6 +21,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBOutlet weak var phoneNumber: UITextField!
     
+     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView() //sets up activity indicator
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,15 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     @IBAction func signUpAction(_ sender: Any) {
+        
+        
+        activityIndicator.center = self.view.center //center of view controller
+        activityIndicator.hidesWhenStopped = true //gets rid of indicator when page is ready
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray //sets the color of the activity indicator to gray
+        view.addSubview(activityIndicator) //adds the activity indicator to the view
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents() //prevents the user from interacting with the screen
+        
         let user = PFUser() //attempt create a new user
         
         //username and password are in their respective text boxes
@@ -72,13 +83,12 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             if error != nil{
                 self.createAlert(title: "Error", message: "Cannot Sign up at this time") //display an error message if the sign up failed
             } else {
-                self.createAlert(title: "Success", message: "User signed up")
                 
                 PFUser.current()?["phoneNumber"] = self.phoneNumber.text
                 
-                PFUser.current()?["isParent"] = self.studentOrParent.isOn //upload the is student/parent information on the parse server
+                PFUser.current()?["isFemale"] = self.studentOrParent.isOn //upload the is student/parent information on the parse server
                 
-              let imageData = UIImagePNGRepresentation(self.profilePicture.image!)
+              let imageData = UIImageJPEGRepresentation(self.profilePicture.image!, 0.5)
               PFUser.current()?["profilePicture"] = PFFile(name: "PhotoBooth.png", data: imageData!) //saves the profile picture of the user in the parse server
                 
                 PFUser.current()?.saveInBackground(block: { (success, error) in
@@ -87,6 +97,10 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                     } else {
                         print("Data Saved.") //debugger
                         self.performSegue(withIdentifier: "signUpFinished", sender: self) //if all the data is saved correctly, move to the welcome user screen
+                        self.activityIndicator.stopAnimating() //if there is an error, allow the user to try again
+                       // self.createAlert(title: "Error", message: "Cannot Log In.")
+                        UIApplication.shared.endIgnoringInteractionEvents() //allow the user to interact with the screen again
+                        //self.createAlert(title: "Success", message: "User signed up")
                     }
                 })
             }

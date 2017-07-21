@@ -59,10 +59,14 @@ class SettingsTableViewController: UITableViewController {
             performSegue(withIdentifier: "settingsToHome", sender: self) //go back to the home page
         }
     
-    if indexPath.row == 0 {
-        performSegue(withIdentifier: "settingsToHelp", sender: self)
+        if indexPath.row == 0 {
+            performSegue(withIdentifier: "settingsToHelp", sender: self)
         }
     
+    if indexPath.row == 1{
+            performSegue(withIdentifier: "settingsToEdit", sender: self)
+    
+        }
     }
     
 

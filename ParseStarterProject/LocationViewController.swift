@@ -122,6 +122,18 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
         
     }
     
+    @IBAction func cancelLocation(_ sender: Any) {
+        PFUser.current()?["Location"] = PFGeoPoint(latitude: 0, longitude: 0)
+        PFUser.current()?.saveInBackground(block: { (success, error) in
+            if error != nil {
+                self.createAlert(title: "Error", message: "Cannot set point")
+            } else {
+                self.createAlert(title: "You are hidden", message: "mwaHAHAHA>:)")
+            }
+        })
+    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         mileRange.resignFirstResponder() //when the screen is touched, get rid of the keyboards of both text fields.
         classCode.resignFirstResponder()
