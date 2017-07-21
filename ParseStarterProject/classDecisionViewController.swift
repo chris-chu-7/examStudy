@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class classDecisionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class classDecisionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet var classQuery: UIView! //Window 1 to search for classes
     @IBOutlet var classRate: UIView! //Window 2 with the tableView of student Rankings
@@ -50,6 +50,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
         
         PFUser.current()?["Courses"] = userClasses
         userClasses = PFUser.current()?["Courses"] as! [String]
+        className.delegate = self
     }
 
     override func didReceiveMemoryWarning() {

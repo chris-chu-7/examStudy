@@ -21,7 +21,7 @@ class updateProfileViewController: UIViewController, UINavigationControllerDeleg
         super.viewDidLoad()
         
         let query = PFUser.query()
-        query?.whereKey("username", equalTo: PFUser.current()?["username"])
+        query?.whereKey("username", equalTo: PFUser.current()?["username"]! as Any)
         query?.findObjectsInBackground(block: { (object, error) in
             if error != nil {
                 print("error: cannot find picture")
@@ -39,13 +39,23 @@ class updateProfileViewController: UIViewController, UINavigationControllerDeleg
     }
     
     @IBAction func uploadPicture(_ sender: Any) {
+        
         let imagePicker = UIImagePickerController() //sets up in image picker so the user picks profile picture from his/her photo
         //library
-        imagePicker.delegate = self 
+        imagePicker.delegate = self
+        activityIndicator.center = self.view.center //center of view controller
+        activityIndicator.hidesWhenStopped = true //gets rid of indicator when page is ready
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white //sets the color of the activity indicator to gray
+        view.addSubview(activityIndicator) //adds the activity indicator to the view
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents() //prevents the user from interacting with the screen
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         imagePicker.allowsEditing = false
         
         self.present(imagePicker, animated: true, completion: nil) //present the image controller
+        self.activityIndicator.stopAnimating()// if there is no error, stop animating the wait button
+        //and move on to the next window.
+        UIApplication.shared.endIgnoringInteractionEvents() //allow the user to interact with the screen again
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -95,6 +105,44 @@ class updateProfileViewController: UIViewController, UINavigationControllerDeleg
     @IBAction func back(_ sender: Any) {
         performSegue(withIdentifier: "updateToSettings", sender: self)
     }
+    
+    
+    @IBAction func deleteAccount(_ sender: Any) {
+        activityIndicator.center = self.view.center //center of view controller
+        activityIndicator.hidesWhenStopped = true //gets rid of indicator when page is ready
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white //sets the color of the activity indicator to gray
+        view.addSubview(activityIndicator) //adds the activity indicator to the view
+        activityIndicator.startAnimating()
+        let alert = UIAlertController(title: "Are you sure?", message: "Do you want to delete your account", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+            PFUser.current()?.deleteInBackground(block: { (success, error) in
+                if error != nil {
+                    alert.dismiss(animated: true, completion: nil)
+                    self.createAlert(title: "Error", message: "Cannot delete account")
+                    self.activityIndicator.stopAnimating()// if there is no error, stop animating the wait button
+                    //and move on to the next window.
+                    UIApplication.shared.endIgnoringInteractionEvents() //allow the user to interact with the screen again
+                } else {
+                    alert.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "deleteAccount", sender: self)
+                    self.activityIndicator.stopAnimating()// if there is no error, stop animating the wait button
+                    //and move on to the next window.
+                    UIApplication.shared.endIgnoringInteractionEvents() //allow the user to interact with the screen again
+                }
+            })
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.activityIndicator.stopAnimating()// if there is no error, stop animating the wait button
+            //and move on to the next window.
+            UIApplication.shared.endIgnoringInteractionEvents() //allow the user to interact with the screen again
+
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         phoneNumber.resignFirstResponder()

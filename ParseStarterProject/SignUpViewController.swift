@@ -42,6 +42,12 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     
     @IBAction func uploadProfilePicture(_ sender: Any) {
+        activityIndicator.center = self.view.center //center of view controller
+        activityIndicator.hidesWhenStopped = true //gets rid of indicator when page is ready
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white //sets the color of the activity indicator to gray
+        view.addSubview(activityIndicator) //adds the activity indicator to the view
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents() //prevents the user from interacting with the screen
         let imagePicker = UIImagePickerController() //sets up in image picker so the user picks profile picture from his/her photo
                                                     //library
         imagePicker.delegate = self
@@ -49,6 +55,9 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         imagePicker.allowsEditing = false
         
         self.present(imagePicker, animated: true, completion: nil) //present the image controller
+        self.activityIndicator.stopAnimating()// if there is no error, stop animating the wait button
+        //and move on to the next window.
+        UIApplication.shared.endIgnoringInteractionEvents() //allow the user to interact with the screen again
     }
     
     
