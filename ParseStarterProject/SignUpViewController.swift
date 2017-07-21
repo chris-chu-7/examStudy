@@ -139,7 +139,15 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        passwordTextField.resignFirstResponder() //dismissess all the text fields
+        phoneNumber.resignFirstResponder()
         return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        usernameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder() //dismissess all the text fields
+        phoneNumber.resignFirstResponder() //resigns the request text field when the screen is touched
     }
 
 }

@@ -215,7 +215,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navyblueloginbackground" translatesAutoresizingMaskIntoConstraints="NO" id="zl5-XQ-N0N">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYI-4a-HvO">
                                 <rect key="frame" x="114.66666666666669" y="87" width="185" height="30"/>
@@ -232,7 +232,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rJL-wz-9To">
-                                <rect key="frame" x="30" y="125" width="354" height="466"/>
+                                <rect key="frame" x="30" y="125" width="354" height="417"/>
                             </mapView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search a class code here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XmD-ec-PAB">
                                 <rect key="frame" x="30" y="49" width="354" height="30"/>
@@ -244,7 +244,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4Y-xu-Ea0">
-                                <rect key="frame" x="106" y="599" width="203" height="30"/>
+                                <rect key="frame" x="106" y="550" width="203" height="30"/>
                                 <color key="backgroundColor" red="0.088085494935512543" green="0.51882743835449219" blue="0.98535090684890747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="203" id="9eZ-5H-9sC"/>
@@ -257,8 +257,8 @@
                                     <action selector="shareLocation:" destination="soy-w1-MUq" eventType="touchUpInside" id="Pvp-Gq-K7I"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100.0" borderStyle="roundedRect" placeholder="Enter Mile Range Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PcM-V5-vrB">
-                                <rect key="frame" x="66" y="686" width="283" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Mile Radius between 1 and 30" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PcM-V5-vrB">
+                                <rect key="frame" x="66" y="637" width="283" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="zeN-gS-9Yq"/>
                                 </constraints>
@@ -278,7 +278,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqn-v3-Jth">
-                                <rect key="frame" x="106" y="637" width="203" height="30"/>
+                                <rect key="frame" x="106" y="588" width="203" height="30"/>
                                 <color key="backgroundColor" red="0.98535090680000004" green="0.46617431440000001" blue="0.40261495149999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="203" id="HRB-6s-sEG"/>
@@ -621,6 +621,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eWx-rc-s0X" id="vwF-2T-NMT"/>
+                                </connections>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy This:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44l-ye-KGb">
                                 <rect key="frame" x="148.66666666666669" y="142" width="117.00000000000006" height="21"/>
@@ -678,7 +681,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navyblueloginbackground" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-5Y-KsU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAI-gu-FQW">
                                 <rect key="frame" x="40" y="40" width="334" height="656"/>
@@ -739,7 +742,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jky-P6-nS7">
-                                <rect key="frame" x="40" y="40" width="334" height="676"/>
+                                <rect key="frame" x="40" y="40" width="334" height="627"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kP-WN-sTB">
                                         <rect key="frame" x="296" y="8" width="30" height="30"/>
@@ -1012,6 +1015,14 @@
                                     <action selector="save:" destination="vAo-bY-PfG" eventType="touchUpInside" id="cfJ-AD-0Yk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijd-w6-bbO">
+                                <rect key="frame" x="145" y="686" width="125" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Delete Account">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1093,6 +1104,9 @@
                                                 <string key="text">Welcome To ExamStudy. This application has 2 main features. One feature is called powerScore. When you search for a class in the Homepage, you are looking at their powerScore, a measurement of study source effectiveness based on user rankings. The higher the PowerScore rank, the  more effective the study source is. The other feature is studentFinder, where a map is used. You must first click "share your location" with others then click "search for classmates". There will be annotations with classmate's location and phone number so you can get into contact.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Tvn-Lw-hh9" id="vGn-Pf-YLO"/>
+                                                </connections>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some Confusing Symbols:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fU-Ea-igy">
                                                 <rect key="frame" x="77.666666666666686" y="435" width="259" height="21"/>
@@ -1189,6 +1203,9 @@
                                                 <string key="text">Submit any questions, requests, or improvement ideas for the application here. It it is a question, submit your email so we can get you back ASAP.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Tvn-Lw-hh9" id="jQR-W1-V6N"/>
+                                                </connections>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1459,9 +1476,9 @@
         <image name="transparent_text_effect" width="1448" height="185"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dxB-Lf-YeM"/>
         <segue reference="ALx-Fb-x1v"/>
         <segue reference="riH-GR-XGk"/>
-        <segue reference="CDx-NK-OMk"/>
+        <segue reference="QRH-C5-tEx"/>
+        <segue reference="euW-w1-3Xe"/>
     </inferredMetricsTieBreakers>
 </document>

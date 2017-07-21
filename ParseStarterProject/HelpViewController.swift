@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class HelpViewController: UIViewController {
+class HelpViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var request: UITextView!
     
@@ -20,7 +20,7 @@ class HelpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        // request.delegate = self as! UITextViewDelegate //delegates self
-        request.delegate = self as? UITextViewDelegate
+        request.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -47,15 +47,6 @@ class HelpViewController: UIViewController {
         }
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n"  // Recognizes enter key in keyboard
-        {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         request.resignFirstResponder() //resigns the request text field when "return" is pressed
@@ -65,6 +56,19 @@ class HelpViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        request.resignFirstResponder() //resigns the request text field when the screen is touched
     }
+    
+    
+    @nonobjc func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            request.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    
+    
+    
     
     
     /*

@@ -211,6 +211,11 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
         className.resignFirstResponder()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        className.resignFirstResponder()
+        return true
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toWebView"{

@@ -156,6 +156,15 @@ class ClassReviewViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         hourStudy.resignFirstResponder() //when the screen is touched, get rid of the keyboard
         classCode.resignFirstResponder()
+        url.resignFirstResponder()
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        hourStudy.resignFirstResponder() //when the screen is touched, get rid of the keyboard
+        classCode.resignFirstResponder()
+        url.resignFirstResponder()
+        return true
+    }
+    
     
 }
