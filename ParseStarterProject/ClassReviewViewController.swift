@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ClassReviewViewController: UIViewController {
+class ClassReviewViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var url: UITextField! //url of main source that the student went to study
     @IBOutlet weak var hourStudy: UITextField! //number of hours in which the student studied
@@ -21,10 +21,12 @@ class ClassReviewViewController: UIViewController {
     
     var numHours = 10 //number of hours spent studying placeholder
     var score = 0 //placeholder value for powerScore to be sent to ParseServer
+    var numReviews = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        classCode.delegate = self
+        hourStudy.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -96,6 +98,8 @@ class ClassReviewViewController: UIViewController {
     
     
     @IBAction func submitReview(_ sender: Any) {
+        
+        if numReviews <= 1{
         let query = PFQuery(className: "URLs") //look in the URL class
         query.whereKey("URL", equalTo: url.text!) //make a query to see if the URL already exists
         query.getFirstObjectInBackground { (objects, error) in
@@ -134,6 +138,7 @@ class ClassReviewViewController: UIViewController {
                                 print("Object is not saved.")
                             } else {
                                 print("Object saved")
+                                self.numReviews = self.numReviews + 1
                             }
                         })
                     }
@@ -142,6 +147,9 @@ class ClassReviewViewController: UIViewController {
             }
         
         
+            }
+        } else {
+            self.createAlert(title: "Spam Prevention", message: "Can only submit limited reviews at a time")
         }
         
     }
@@ -166,5 +174,16 @@ class ClassReviewViewController: UIViewController {
         return true
     }
     
+    
+    func createAlert(title:String, message:String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
 }

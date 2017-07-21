@@ -28,6 +28,7 @@
 		C4C28E5C1F1AA227005EEFEA /* ClassReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */; };
 		C4C4D0151F2129130023158D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4D0141F2129130023158D /* WebViewController.swift */; };
 		C4C4D0171F214DD60023158D /* updateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4D0161F214DD50023158D /* updateProfileViewController.swift */; };
+		C4D78D511F22AEBF00B674FC /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D78D501F22AEB400B674FC /* iAd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassReviewViewController.swift; sourceTree = "<group>"; };
 		C4C4D0141F2129130023158D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C4C4D0161F214DD50023158D /* updateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateProfileViewController.swift; sourceTree = "<group>"; };
+		C4D78D501F22AEB400B674FC /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D78D511F22AEBF00B674FC /* iAd.framework in Frameworks */,
 				C42C50491F1E7B630073D3CF /* CoreLocation.framework in Frameworks */,
 				81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */,
 				81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */,
@@ -126,6 +129,7 @@
 		81BA816A1A49DB5600E65899 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4D78D501F22AEB400B674FC /* iAd.framework */,
 				C42C50481F1E7B550073D3CF /* CoreLocation.framework */,
 				81BA816B1A49DB6800E65899 /* Bolts.framework */,
 				81BA816C1A49DB6800E65899 /* Parse.framework */,
