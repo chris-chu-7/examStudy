@@ -10,6 +10,7 @@
 import UIKit
 
 import Parse
+import Firebase
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
+        FirebaseApp.configure()
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-4891117516626269/1384730877")
+        
         Parse.enableLocalDatastore()
         
         let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in

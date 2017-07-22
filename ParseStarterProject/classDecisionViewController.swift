@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import GoogleMobileAds
 
 class classDecisionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -18,6 +19,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var flipCardButton: UIButton! //button to flip fron classQuery to classRate
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var googleAdView: GADBannerView!
     
    // var classSuccess = false //placeholder to see if the class is found and to check if to move UIViews
     var classType = "" //placeholder variable for className
@@ -26,6 +28,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     var classExists = true
     var userClasses = ["eS"]
     var link = " "
+    var search = [String]()
     
     
     
@@ -44,6 +47,14 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        googleAdView.adUnitID = "ca-app-pub-4891117516626269/1384730877"
+        googleAdView.rootViewController = self
+        googleAdView.load(request)
+        
+        
         tableView.dataSource = self
         //efreshControl.addTarget(self, action: #selector(ViewController.refreshData), for: UIControlEvents.valueChanged)
         //tableView.addSubview(refreshControl)
@@ -72,7 +83,10 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     
-
+    @IBAction func goToDatabase(_ sender: Any) {
+        performSegue(withIdentifier: "toclassSearch", sender: self)
+    }
+    
     
     
     /*
@@ -225,6 +239,29 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
             webController.myString = link
             
         }
+        
+        if segue.identifier == "toclassSearch" {
+            
+            let searchController = segue.destination as! classSearchTableViewController
+            let query = PFQuery(className: "Classes")
+            query.whereKey("name", notEqualTo: " ")
+            query.findObjectsInBackground { (objects, error) in
+                if error != nil {
+                    self.createAlert(title: "Error", message: "Cannot find any classes")
+                } else {
+                    for object in objects!{
+                        searchController.stump.append(object["name"] as! String)
+                    }
+                    print(searchController.stump)
+                }
+            }
+            
+            
+        }
+    }
+    
+    public func returnSearch(_ string: String) -> Array<String> {
+        return search
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
