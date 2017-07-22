@@ -41,6 +41,11 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     
+    @IBAction func goBack(_ sender: Any) {
+        performSegue(withIdentifier: "backFromSignUp", sender: self)
+    }
+    
+    
     @IBAction func uploadProfilePicture(_ sender: Any) {
         activityIndicator.center = self.view.center //center of view controller
         activityIndicator.hidesWhenStopped = true //gets rid of indicator when page is ready
@@ -90,7 +95,9 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         
         user.signUpInBackground(block: { (user, error) in //try to sign up the user
             if error != nil{
-                self.createAlert(title: "Error", message: "Cannot Sign up at this time") //display an error message if the sign up failed
+                self.activityIndicator.stopAnimating() //if there is an error, allow the user to try again
+                // self.createAlert(title: "Error", message: "Cannot Log In.")
+                UIApplication.shared.endIgnoringInteractionEvents() 
             } else {
                 
                 PFUser.current()?["phoneNumber"] = self.phoneNumber.text
@@ -129,13 +136,12 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in
-            alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: true, completion: nil) //bottom button of the alert for the user to dismiss
         }))
         
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil) //actually present (pop out) the notification when needed
         
     }
-    
     /*
      The next two functions simply dismiss the username and password keyboard when return is hit.
  */

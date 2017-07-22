@@ -84,7 +84,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     @IBAction func goToDatabase(_ sender: Any) {
-        performSegue(withIdentifier: "toclassSearch", sender: self)
+        performSegue(withIdentifier: "toSearch", sender: self)
     }
     
     
@@ -234,30 +234,12 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toWebView"{
-            
            let webController = segue.destination as! WebViewController
             webController.myString = link
-            
         }
         
-        if segue.identifier == "toclassSearch" {
             
-            let searchController = segue.destination as! classSearchTableViewController
-            let query = PFQuery(className: "Classes")
-            query.whereKey("name", notEqualTo: " ")
-            query.findObjectsInBackground { (objects, error) in
-                if error != nil {
-                    self.createAlert(title: "Error", message: "Cannot find any classes")
-                } else {
-                    for object in objects!{
-                        searchController.stump.append(object["name"] as! String)
-                    }
-                    print(searchController.stump)
-                }
-            }
-            
-            
-        }
+        
     }
     
     public func returnSearch(_ string: String) -> Array<String> {

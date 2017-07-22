@@ -21,10 +21,11 @@
 		C4064B6A1F142EE6001FAAD0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4064B691F142EE6001FAAD0 /* SignUpViewController.swift */; };
 		C42C50471F1E7A820073D3CF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42C50461F1E7A820073D3CF /* LocationViewController.swift */; };
 		C42C50491F1E7B630073D3CF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42C50481F1E7B550073D3CF /* CoreLocation.framework */; };
+		C45587B21F23F9AD00E9AADE /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45587B11F23F9AD00E9AADE /* DataCell.swift */; };
 		C46592C41F12D25F00F7B163 /* WelcomeToLoginSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46592C31F12D25F00F7B163 /* WelcomeToLoginSegue.swift */; };
 		C46592C61F13EFCE00F7B163 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46592C51F13EFCE00F7B163 /* LoginViewController.swift */; };
 		C466BB8A1F2027CC00522275 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C466BB891F2027CC00522275 /* HelpViewController.swift */; };
-		C4A357181F22BAD300AD2C18 /* classSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A357171F22BAD300AD2C18 /* classSearchTableViewController.swift */; };
+		C466C76A1F22DADC007B09B5 /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C466C7691F22DADC007B09B5 /* searchViewController.swift */; };
 		C4BEB6221F180E8D008ED38E /* classDecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEB6211F180E8D008ED38E /* classDecisionViewController.swift */; };
 		C4BEB6241F182B8E008ED38E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEB6231F182B8E008ED38E /* SettingsTableViewController.swift */; };
 		C4C28E5C1F1AA227005EEFEA /* ClassReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */; };
@@ -54,10 +55,11 @@
 		C4064B691F142EE6001FAAD0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C42C50461F1E7A820073D3CF /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		C42C50481F1E7B550073D3CF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C45587B11F23F9AD00E9AADE /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		C46592C31F12D25F00F7B163 /* WelcomeToLoginSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeToLoginSegue.swift; sourceTree = "<group>"; };
 		C46592C51F13EFCE00F7B163 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C466BB891F2027CC00522275 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
-		C4A357171F22BAD300AD2C18 /* classSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = classSearchTableViewController.swift; sourceTree = "<group>"; };
+		C466C7691F22DADC007B09B5 /* searchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
 		C4BEB6211F180E8D008ED38E /* classDecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classDecisionViewController.swift; sourceTree = "<group>"; };
 		C4BEB6231F182B8E008ED38E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassReviewViewController.swift; sourceTree = "<group>"; };
@@ -140,7 +142,8 @@
 				C466BB891F2027CC00522275 /* HelpViewController.swift */,
 				C4C4D0141F2129130023158D /* WebViewController.swift */,
 				C4C4D0161F214DD50023158D /* updateProfileViewController.swift */,
-				C4A357171F22BAD300AD2C18 /* classSearchTableViewController.swift */,
+				C466C7691F22DADC007B09B5 /* searchViewController.swift */,
+				C45587B11F23F9AD00E9AADE /* DataCell.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				C4D78D521F22B28300B674FC /* GoogleService-Info.plist */,
 			);
@@ -299,9 +302,10 @@
 			files = (
 				C46592C61F13EFCE00F7B163 /* LoginViewController.swift in Sources */,
 				C4C4D0151F2129130023158D /* WebViewController.swift in Sources */,
+				C466C76A1F22DADC007B09B5 /* searchViewController.swift in Sources */,
+				C45587B21F23F9AD00E9AADE /* DataCell.swift in Sources */,
 				C4C28E5C1F1AA227005EEFEA /* ClassReviewViewController.swift in Sources */,
 				C4BEB6221F180E8D008ED38E /* classDecisionViewController.swift in Sources */,
-				C4A357181F22BAD300AD2C18 /* classSearchTableViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				C46592C41F12D25F00F7B163 /* WelcomeToLoginSegue.swift in Sources */,
