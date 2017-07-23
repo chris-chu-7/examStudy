@@ -11,7 +11,7 @@ import Parse
 
 class SettingsTableViewController: UITableViewController {
     
-    var settings = ["Help","Edit Profile", "Home Page", "Log Out"] //array that has every aspect of the tableView
+    var settings = ["Help","Edit Profile", "Home Page", "Manage Classes", "Log Out"] //array that has every aspect of the tableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class SettingsTableViewController: UITableViewController {
             performSegue(withIdentifier: "logout", sender: self) //if the last button is clicked, logout and move to the start screen.
         }
     
-        if indexPath.row == settings.count - 2{
+        if indexPath.row == settings.count - 3{
             performSegue(withIdentifier: "settingsToHome", sender: self) //go back to the home page
         }
     
@@ -67,6 +67,11 @@ class SettingsTableViewController: UITableViewController {
             performSegue(withIdentifier: "settingsToEdit", sender: self)
     
         }
+    
+    if indexPath.row == 3{
+        performSegue(withIdentifier: "manageClasses", sender: self)
+    }
+    
     }
     
 

@@ -98,6 +98,7 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
                                 if self.students.contains(anobject["username"] as! String){
                                     self.finalStudents.append(anobject["username"] as! String)
                                     self.finalLocations.append(anobject["Location"] as AnyObject)
+                                    if self.classCode.text != ""{
                                     let annotation = MKPointAnnotation()
                                     annotation.coordinate = CLLocationCoordinate2D(latitude: ((anobject["Location"]) as AnyObject).latitude, longitude: ((anobject["Location"]) as AnyObject).longitude)
                                     annotation.title = (anobject["username"] as! String)
@@ -108,6 +109,9 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
                                         }
                                     }
                                     self.map.addAnnotation(annotation) //add the annotation
+                                    } else {
+                                        self.createAlert(title: "Error", message: "Please enter a class")
+                                    }
                                     
                                 }
                                 print(self.finalStudents)

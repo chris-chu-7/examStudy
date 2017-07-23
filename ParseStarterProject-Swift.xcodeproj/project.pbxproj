@@ -31,6 +31,7 @@
 		C4C28E5C1F1AA227005EEFEA /* ClassReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */; };
 		C4C4D0151F2129130023158D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4D0141F2129130023158D /* WebViewController.swift */; };
 		C4C4D0171F214DD60023158D /* updateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C4D0161F214DD50023158D /* updateProfileViewController.swift */; };
+		C4CCDC1F1F253F020020BC7E /* ManageClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CCDC1E1F253F020020BC7E /* ManageClassesViewController.swift */; };
 		C4D78D511F22AEBF00B674FC /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D78D501F22AEB400B674FC /* iAd.framework */; };
 		C4D78D531F22B28400B674FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4D78D521F22B28300B674FC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		C4C28E5B1F1AA227005EEFEA /* ClassReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassReviewViewController.swift; sourceTree = "<group>"; };
 		C4C4D0141F2129130023158D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C4C4D0161F214DD50023158D /* updateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateProfileViewController.swift; sourceTree = "<group>"; };
+		C4CCDC1E1F253F020020BC7E /* ManageClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageClassesViewController.swift; sourceTree = "<group>"; };
 		C4D78D501F22AEB400B674FC /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C4D78D521F22B28300B674FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE0B8EE1327088670BAEF4DB /* Pods_ParseStarterProject_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParseStarterProject_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 				C4C4D0161F214DD50023158D /* updateProfileViewController.swift */,
 				C466C7691F22DADC007B09B5 /* searchViewController.swift */,
 				C45587B11F23F9AD00E9AADE /* DataCell.swift */,
+				C4CCDC1E1F253F020020BC7E /* ManageClassesViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				C4D78D521F22B28300B674FC /* GoogleService-Info.plist */,
 			);
@@ -303,6 +306,7 @@
 				C46592C61F13EFCE00F7B163 /* LoginViewController.swift in Sources */,
 				C4C4D0151F2129130023158D /* WebViewController.swift in Sources */,
 				C466C76A1F22DADC007B09B5 /* searchViewController.swift in Sources */,
+				C4CCDC1F1F253F020020BC7E /* ManageClassesViewController.swift in Sources */,
 				C45587B21F23F9AD00E9AADE /* DataCell.swift in Sources */,
 				C4C28E5C1F1AA227005EEFEA /* ClassReviewViewController.swift in Sources */,
 				C4BEB6221F180E8D008ED38E /* classDecisionViewController.swift in Sources */,
