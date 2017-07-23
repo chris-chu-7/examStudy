@@ -70,7 +70,7 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
             let studentsNearMeQuery = PFUser.query() //look for close students
             studentsNearMeQuery?.whereKey("Location", withinGeoBoxFromSouthwest: southwest, toNortheast: northeast) //look for students near the particular GeoPoint(FIXME)
             
-            studentsNearMeQuery?.findObjectsInBackground(block: { (objects, error) in
+            studentsNearMeQuery?.findObjectsInBackground(block: { (objecto, error) in
                 if error != nil {
                     self.createAlert(title: "Error", message: "Cannot find students") //display an error message in the case of an error
                 } else {
@@ -80,12 +80,18 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
                     
                     classQuery?.findObjectsInBackground(block: { (objects, error) in
                         if error != nil{
+                            let allAnnotations = self.map.annotations
+                            self.map.removeAnnotations(allAnnotations)
                             self.createAlert(title: "Error", message: "Cannot find any Students")
                         } else {
                             let allAnnotations = self.map.annotations
                             self.map.removeAnnotations(allAnnotations)
                             if let object = objects{
-                                for one in object{ //for every student in the query
+                                
+                                if let objecta = objecto{
+                                
+                                if objecta.count > 0{
+                                for one in objecta{ //for every student in the query
                                     
                                     let annotation = MKPointAnnotation() //initialize an annotation
                                     annotation.coordinate = CLLocationCoordinate2D(latitude: (one["Location"] as AnyObject).latitude, longitude: (one["Location"] as AnyObject).longitude) //put the annotation in the location of the other users
@@ -103,6 +109,11 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
                                     self.map.addAnnotation(annotation) //add the annotation
                                 }
                             }
+                                    
+                                }
+                                
+                                
+                            } //DO
                         }
                     })
                     
