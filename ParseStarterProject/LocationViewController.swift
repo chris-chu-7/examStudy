@@ -25,6 +25,9 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
     var southwest: PFGeoPoint!
     var northeast: PFGeoPoint!
     var mileLimit:Double = 0
+    var students = [String]()
+    var finalStudents = [String]()
+    var finalLocations = [AnyObject]()
     
     @IBAction func goToSettings(_ sender: Any) {
         performSegue(withIdentifier: "mapToSettings", sender: self) //go to the settings
@@ -67,62 +70,59 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
         if (manager.location?.coordinate) != nil{
             
             
-            let studentsNearMeQuery = PFUser.query() //look for close students
-            studentsNearMeQuery?.whereKey("Location", withinGeoBoxFromSouthwest: southwest, toNortheast: northeast) //look for students near the particular GeoPoint(FIXME)
-            
-            studentsNearMeQuery?.findObjectsInBackground(block: { (objecto, error) in
-                if error != nil {
-                    self.createAlert(title: "Error", message: "Cannot find students") //display an error message in the case of an error
+            let studentsNearMeQuery = PFUser.query()
+            studentsNearMeQuery?.whereKey("Location", withinGeoBoxFromSouthwest: southwest, toNortheast: northeast)
+            studentsNearMeQuery?.findObjectsInBackground(block: { (objects, error) in
+                if error != nil{
+                    self.createAlert(title: "Error", message: "Cannot retrieve classmate locations")
                 } else {
+                    self.students.removeAll()
+                    for object in objects!{
+                        self.students.append(object["username"] as! String)
+                    }
                     
-                    let classQuery = PFUser.query()
-                    classQuery?.whereKey("Courses", contains: self.classCode.text)
-                    
-                    classQuery?.findObjectsInBackground(block: { (objects, error) in
+                    let studentClassQuery = PFUser.query()
+                    studentClassQuery?.whereKey("Courses", contains: self.classCode.text)
+                    studentClassQuery?.findObjectsInBackground(block: { (objects, error) in
                         if error != nil{
                             let allAnnotations = self.map.annotations
                             self.map.removeAnnotations(allAnnotations)
-                            self.createAlert(title: "Error", message: "Cannot find any Students")
+                            self.createAlert(title: "Error", message: "Cannot find any classmates")
                         } else {
+                            self.finalStudents.removeAll()
+                            self.finalLocations.removeAll()
                             let allAnnotations = self.map.annotations
                             self.map.removeAnnotations(allAnnotations)
-                            if let object = objects{
-                                
-                                if let objecta = objecto{
-                                
-                                if objecta.count > 0{
-                                for one in objecta{ //for every student in the query
-                                    
-                                    let annotation = MKPointAnnotation() //initialize an annotation
-                                    annotation.coordinate = CLLocationCoordinate2D(latitude: (one["Location"] as AnyObject).latitude, longitude: (one["Location"] as AnyObject).longitude) //put the annotation in the location of the other users
-                                    annotation.title = (one["username"] as! String) //display the user name
-                                    
-                                    
-                                    annotation.subtitle = ("No number") //the other annotation displays the user phone number,
-                                    //if there is no phone number, then display this default message (error prevention)
-                                    
-                                    if (one["phoneNumber"] as? String != nil){
-                                        if one["phoneNumber"] as! String != ""{
-                                            annotation.subtitle = (one["phoneNumber"] as! String) //if the phonenumber is entered successfully, display the phone # in the annotation subtitle
+                            
+                            for anobject in objects!{
+                                if self.students.contains(anobject["username"] as! String){
+                                    self.finalStudents.append(anobject["username"] as! String)
+                                    self.finalLocations.append(anobject["Location"] as AnyObject)
+                                    let annotation = MKPointAnnotation()
+                                    annotation.coordinate = CLLocationCoordinate2D(latitude: ((anobject["Location"]) as AnyObject).latitude, longitude: ((anobject["Location"]) as AnyObject).longitude)
+                                    annotation.title = (anobject["username"] as! String)
+                                    annotation.subtitle = "No number"
+                                    if (anobject["phoneNumber"] as? String != nil){
+                                        if anobject["phoneNumber"] as! String != ""{
+                                            annotation.subtitle = (anobject["phoneNumber"] as! String) //if the phonenumber is entered successfully, display the phone # in the annotation subtitle
                                         }
                                     }
                                     self.map.addAnnotation(annotation) //add the annotation
-                                }
-                            }
                                     
                                 }
+                                print(self.finalStudents)
+                                print(self.finalLocations)
                                 
-                                
-                            } //DO
+                            }
                         }
                     })
                     
-                    
-                    
                 }
-                
-                
             })
+            
+            
+            
+            
         }
         } else {
             self.createAlert(title: "Error", message: "30 miles is the maximum")

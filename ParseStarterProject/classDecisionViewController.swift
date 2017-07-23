@@ -168,7 +168,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
                 })
             }
             else {
-                self.createAlert(title: "Error", message: "Cannot Find query") //else, if no class of type exists, print an error message
+                self.createAlert(title: "Error", message: "Cannot find class") //else, if no class of type exists, print an error message
             }
         }
     }
