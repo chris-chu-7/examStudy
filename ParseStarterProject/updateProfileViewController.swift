@@ -83,9 +83,8 @@ class updateProfileViewController: UIViewController, UINavigationControllerDeleg
             self.createAlert(title: "Error", message: "Picture is too large")
         }
         
-        if phoneNumber.text != ""{
+        
           PFUser.current()?["phoneNumber"] = phoneNumber.text! //save the phonenumber if there is text entered
-        }
         
         PFUser.current()?.saveInBackground(block: { (success, error) in
             if error != nil{

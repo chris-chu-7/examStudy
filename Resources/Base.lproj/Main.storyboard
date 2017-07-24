@@ -233,6 +233,9 @@
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rJL-wz-9To">
                                 <rect key="frame" x="30" y="125" width="354" height="466"/>
+                                <connections>
+                                    <outlet property="delegate" destination="soy-w1-MUq" id="Lu9-Vf-xIz"/>
+                                </connections>
                             </mapView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search a class code here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XmD-ec-PAB">
                                 <rect key="frame" x="30" y="49" width="354" height="30"/>
@@ -1331,7 +1334,7 @@
                                                     <constraint firstAttribute="width" constant="240" id="REt-PF-FFz"/>
                                                     <constraint firstAttribute="height" constant="280" id="aAN-Bl-gGh"/>
                                                 </constraints>
-                                                <string key="text">Submit any questions, requests, or improvement ideas for the application here. It it is a question, submit your email so we can get you back ASAP.</string>
+                                                <string key="text">Submit any questions, requests, or improvement ideas for the application here. It it is a question, submit your email so we can get you back ASAP. Or email chutechco@gmail.com for any complaints and suggestions</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <connections>
@@ -1734,10 +1737,10 @@
         <image name="transparent_text_effect" width="1448" height="185"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ALx-Fb-x1v"/>
-        <segue reference="i6S-Fc-fkk"/>
-        <segue reference="dMN-B3-I8H"/>
-        <segue reference="7vv-RK-CeU"/>
         <segue reference="ndD-Na-9QV"/>
+        <segue reference="7vv-RK-CeU"/>
+        <segue reference="euW-w1-3Xe"/>
+        <segue reference="i6S-Fc-fkk"/>
+        <segue reference="ALx-Fb-x1v"/>
     </inferredMetricsTieBreakers>
 </document>

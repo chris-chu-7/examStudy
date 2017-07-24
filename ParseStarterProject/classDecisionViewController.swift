@@ -26,7 +26,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     var classes = [String]()
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var classExists = true
-    var userClasses = [String]()
+    var userClasses = PFUser.current()?["Courses"] as! [String]
     var link = " "
     var search = [String]()
     
@@ -195,6 +195,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func addClass(_ sender: Any) {
         
         
+        
         let query = PFQuery(className: "Classes") //query to search the classes
         query.whereKey("name", equalTo: className.text!) //query to search anything equal to the class's name
         query.getFirstObjectInBackground { (object, error) in
@@ -202,6 +203,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
                 self.createAlert(title: "Error", message: "Cannot add class to your Profile") //if class name is not found, the student cannot be add the class
                 
             } else {
+                if self.userClasses.contains(self.className.text!) == false{ //check to see if the user is already in the class
                 self.userClasses.append(self.className.text!) //otherwise, add all the user classes to the array
                 PFUser.current()?["Courses"] =  self.userClasses //put the classes array back with the user
                 PFUser.current()?.saveInBackground(block: { (success, error) in //try to save the parse
@@ -213,9 +215,12 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
                         self.createAlert(title: "Success", message: "Class added")
                     }
                 })
-                
+                } else {
+                    self.createAlert(title: "Mistake", message: "You are already in this class.")
+                }
             }
         }
+        
         
         
         

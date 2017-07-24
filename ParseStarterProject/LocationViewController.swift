@@ -5,7 +5,6 @@
 //  Created by Christopher Chu on 7/18/17.
 //  Copyright © 2017 Parse. All rights reserved.
 //
-
 import UIKit
 import Parse
 import MapKit
@@ -20,7 +19,7 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
     
     var userLatitude:Double = 0 //changable latitude
     var userLongitude:Double = 0 //changable longitude
-     let manager = CLLocationManager() //manages the user location
+    let manager = CLLocationManager() //manages the user location
     var location: CLLocation! //sets up the user location latitude and longitude
     var southwest: PFGeoPoint!
     var northeast: PFGeoPoint!
@@ -47,14 +46,14 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
         if let miles = Double(mileRange.text!) { //check to see if the user entered a number in the miles range
             mileLimit = miles
             if miles <= 30{
-            
-            let span = Double(miles * 0.02) //conversion of latitude to span (FIXME)
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) //sets the center of the map to user location
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)) //sets the region
-            self.map.setRegion(region, animated: true) //adds the region
-            self.map.showsUserLocation = true //adds the current user location circle
-            southwest = PFGeoPoint(latitude: (manager.location?.coordinate.latitude)! - span * 2, longitude: (manager.location?.coordinate.longitude)! - span * 2)
-            northeast = PFGeoPoint(latitude: (manager.location?.coordinate.latitude)! + span * 2, longitude: (manager.location?.coordinate.longitude)! + span * 2)
+                
+                let span = Double(miles * 0.02) //conversion of latitude to span (FIXME)
+                let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) //sets the center of the map to user location
+                let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)) //sets the region
+                self.map.setRegion(region, animated: true) //adds the region
+                self.map.showsUserLocation = true //adds the current user location circle
+                southwest = PFGeoPoint(latitude: (manager.location?.coordinate.latitude)! - span * 2, longitude: (manager.location?.coordinate.longitude)! - span * 2)
+                northeast = PFGeoPoint(latitude: (manager.location?.coordinate.latitude)! + span * 2, longitude: (manager.location?.coordinate.longitude)! + span * 2)
             }
             else {
                 self.createAlert(title: "Error", message: "Number must be less than 30 miles")
@@ -62,69 +61,69 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
         } else {
             self.createAlert(title: "Error", message: "Please enter a number.")
         }
-            
+        
         
         //This is a query to attempt to find Geopoints
         
         if mileLimit <= 2500{
-        if (manager.location?.coordinate) != nil{ //make sure there is a coordinate
-            
-            
-            let studentsNearMeQuery = PFUser.query()
-            studentsNearMeQuery?.whereKey("Location", withinGeoBoxFromSouthwest: southwest, toNortheast: northeast) //find query within mile range
-            studentsNearMeQuery?.findObjectsInBackground(block: { (objects, error) in
-                if error != nil{
-                    self.createAlert(title: "Error", message: "Cannot retrieve classmate locations")// error message
-                } else {
-                    self.students.removeAll() //remove all from the student array (aka refresh the array)
-                    for object in objects!{
-                        self.students.append(object["username"] as! String) //get all the students near me in the mile range
-                    }
-                    
-                    let studentClassQuery = PFUser.query()
-                    studentClassQuery?.whereKey("Courses", contains: self.classCode.text) //now search for students both in the mile range and in the samve courses as me
-                    studentClassQuery?.findObjectsInBackground(block: { (objects, error) in
-                        if error != nil{
-                            let allAnnotations = self.map.annotations
-                            self.map.removeAnnotations(allAnnotations) //refresh the map
-                            self.createAlert(title: "Error", message: "Cannot find any classmates") //display an error message
-                        } else {
-                            self.finalStudents.removeAll()
-                            self.finalLocations.removeAll() //refresh all the arrays
-                            let allAnnotations = self.map.annotations
-                            self.map.removeAnnotations(allAnnotations) //refresh the map
-                            
-                            for anobject in objects!{
-                                if self.students.contains(anobject["username"] as! String){ //if students near me are also in the same class
-                                    self.finalStudents.append(anobject["username"] as! String) //get all the usernames
-                                    self.finalLocations.append(anobject["Location"] as AnyObject) //get all the locations
-                                    if self.classCode.text != "" && self.classCode.text != nil{ //if there is text in the classCode
-                                    let annotation = MKPointAnnotation()
-                                    annotation.coordinate = CLLocationCoordinate2D(latitude: ((anobject["Location"]) as AnyObject).latitude, longitude: ((anobject["Location"]) as AnyObject).longitude)
-                                    annotation.title = (anobject["username"] as! String)
-                                    annotation.subtitle = "No number" //default annotation
-                                    if (anobject["phoneNumber"] as? String != nil){
-                                        if anobject["phoneNumber"] as! String != ""{
-                                            annotation.subtitle = (anobject["phoneNumber"] as! String) //if the phonenumber is entered successfully, display the phone # in the annotation subtitle
+            if (manager.location?.coordinate) != nil{ //make sure there is a coordinate
+                
+                
+                let studentsNearMeQuery = PFUser.query()
+                studentsNearMeQuery?.whereKey("Location", withinGeoBoxFromSouthwest: southwest, toNortheast: northeast) //find query within mile range
+                studentsNearMeQuery?.findObjectsInBackground(block: { (objects, error) in
+                    if error != nil{
+                        self.createAlert(title: "Error", message: "Cannot retrieve classmate locations")// error message
+                    } else {
+                        self.students.removeAll() //remove all from the student array (aka refresh the array)
+                        for object in objects!{
+                            self.students.append(object["username"] as! String) //get all the students near me in the mile range
+                        }
+                        
+                        let studentClassQuery = PFUser.query()
+                        studentClassQuery?.whereKey("Courses", contains: self.classCode.text) //now search for students both in the mile range and in the samve courses as me
+                        studentClassQuery?.findObjectsInBackground(block: { (objects, error) in
+                            if error != nil{
+                                let allAnnotations = self.map.annotations
+                                self.map.removeAnnotations(allAnnotations) //refresh the map
+                                self.createAlert(title: "Error", message: "Cannot find any classmates") //display an error message
+                            } else {
+                                self.finalStudents.removeAll()
+                                self.finalLocations.removeAll() //refresh all the arrays
+                                let allAnnotations = self.map.annotations
+                                self.map.removeAnnotations(allAnnotations) //refresh the map
+                                
+                                for anobject in objects!{
+                                    if self.students.contains(anobject["username"] as! String){ //if students near me are also in the same class
+                                        self.finalStudents.append(anobject["username"] as! String) //get all the usernames
+                                        self.finalLocations.append(anobject["Location"] as AnyObject) //get all the locations
+                                        if self.classCode.text != "" && self.classCode.text != nil{ //if there is text in the classCode
+                                            let annotation = MKPointAnnotation()
+                                            annotation.coordinate = CLLocationCoordinate2D(latitude: ((anobject["Location"]) as AnyObject).latitude, longitude: ((anobject["Location"]) as AnyObject).longitude)
+                                            annotation.title = (anobject["username"] as! String)
+                                            annotation.subtitle = "No number" //default annotation
+                                            if (anobject["phoneNumber"] as? String != nil){
+                                                if anobject["phoneNumber"] as! String != ""{
+                                                    annotation.subtitle = (anobject["phoneNumber"] as! String) //if the phonenumber is entered successfully, display the phone # in the annotation subtitle
+                                                }
+                                            }
+                                            self.map.addAnnotation(annotation) //add the annotation
+                                        } else {
+                                            self.createAlert(title: "Error", message: "Please enter a class") //if the classCode entered is empty, then display an error message
                                         }
+                                        
                                     }
-                                    self.map.addAnnotation(annotation) //add the annotation
-                                    } else {
-                                        self.createAlert(title: "Error", message: "Please enter a class") //if the classCode entered is empty, then display an error message
-                                    }
-                                    
                                 }
                             }
-                        }
-                    })
-                    
-                }
-            })
-            
-            
-            
-            
-        }
+                        })
+                        
+                    }
+                })
+                
+                
+                
+                
+            }
         } else {
             self.createAlert(title: "Error", message: "30 miles is the maximum") //display an error message if person enters over 30 miles
         }
@@ -147,7 +146,7 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
         manager.startUpdatingLocation()     //sets up the map for the locations to update successfully
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -216,5 +215,5 @@ class LocationViewController: UIViewController , CLLocationManagerDelegate {
         self.present(alert, animated: true, completion: nil)
         
     }
-
+    
 }
