@@ -26,7 +26,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     var classes = [String]()
     var refreshControl: UIRefreshControl = UIRefreshControl()
     var classExists = true
-    var userClasses = PFUser.current()?["Courses"] as! [String]
+    var userClasses = [String]()
     var link = " "
     var search = [String]()
     
@@ -54,6 +54,10 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
         googleAdView.rootViewController = self
         googleAdView.load(request)
         
+        
+        if PFUser.current()?["Courses"] != nil {
+            userClasses = PFUser.current()?["Courses"] as! [String] //reset the classes when they exist
+        }
         
         tableView.dataSource = self
         //efreshControl.addTarget(self, action: #selector(ViewController.refreshData), for: UIControlEvents.valueChanged)
