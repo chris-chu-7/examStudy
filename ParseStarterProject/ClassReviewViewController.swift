@@ -138,7 +138,7 @@ class ClassReviewViewController: UIViewController, UITextFieldDelegate {
                                 print("Object is not saved.")
                             } else {
                                 print("Object saved")
-                                self.numReviews = self.numReviews + 1
+                                self.numReviews = self.numReviews + 1 //add a review
                             }
                         })
                     }

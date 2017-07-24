@@ -11,27 +11,26 @@ import Parse
 
 class updateProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate  {
     
-    @IBOutlet weak var profilePicture: UIImageView!
-    @IBOutlet weak var maleOrFemale: UISwitch!
+    @IBOutlet weak var profilePicture: UIImageView! //change the profile picture
+    @IBOutlet weak var maleOrFemale: UISwitch! //decide if the user is male or female
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView() //sets up activity indicator
-    @IBOutlet weak var phoneNumber: UITextField!
+    @IBOutlet weak var phoneNumber: UITextField!  //change phone number
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let query = PFUser.query()
-        query?.whereKey("username", equalTo: PFUser.current()?["username"]! as Any)
-        query?.findObjectsInBackground(block: { (object, error) in
-            if error != nil {
-                print("error: cannot find picture")
+        phoneNumber.text = (PFUser.current()?["phoneNumber"] as! String) //set the phone number
+        let isFemale = PFUser.current()?["isFemale"] as! Bool //set isfemale boolean
+        maleOrFemale.isOn = isFemale //set the switch
+        let userProfilePhoto = PFUser.current()?["profilePicture"] as! PFFile
+        userProfilePhoto.getDataInBackground { (imageData, error) in
+            if error != nil{
+                print("cannot get profile photo")
             } else {
-                print("found picture")
-                
+                let image = UIImage(data: imageData!)
+                self.profilePicture.image = image //sets the default user profile picture
             }
-        })
-        
-        
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,8 +74,8 @@ class updateProfileViewController: UIViewController, UINavigationControllerDeleg
         view.addSubview(activityIndicator) //adds the activity indicator to the view
         activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents() //prevents the user from interacting with the screen
-        PFUser.current()?["isFemale"] = maleOrFemale.isOn
-        let imageData = UIImageJPEGRepresentation(self.profilePicture.image!, 0.5)
+        PFUser.current()?["isFemale"] = maleOrFemale.isOn //save the gender
+        let imageData = UIImageJPEGRepresentation(self.profilePicture.image!, 0.5) //set the image
         
         if let picture = PFFile(name: "PhotoBooth.png", data: imageData!){ //saves the profile picture of the user in the parse server
             PFUser.current()?["profilePicture"] = picture
@@ -85,7 +84,7 @@ class updateProfileViewController: UIViewController, UINavigationControllerDeleg
         }
         
         if phoneNumber.text != ""{
-          PFUser.current()?["phoneNumber"] = phoneNumber.text!
+          PFUser.current()?["phoneNumber"] = phoneNumber.text! //save the phonenumber if there is text entered
         }
         
         PFUser.current()?.saveInBackground(block: { (success, error) in
@@ -113,9 +112,9 @@ class updateProfileViewController: UIViewController, UINavigationControllerDeleg
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white //sets the color of the activity indicator to gray
         view.addSubview(activityIndicator) //adds the activity indicator to the view
         activityIndicator.startAnimating()
-        let alert = UIAlertController(title: "Are you sure?", message: "Do you want to delete your account", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Are you sure?", message: "Do you want to delete your account", preferredStyle: UIAlertControllerStyle.alert) //create an alert
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
-            PFUser.current()?.deleteInBackground(block: { (success, error) in
+            PFUser.current()?.deleteInBackground(block: { (success, error) in //delete the account
                 if error != nil {
                     alert.dismiss(animated: true, completion: nil)
                     self.createAlert(title: "Error", message: "Cannot delete account")
@@ -124,7 +123,7 @@ class updateProfileViewController: UIViewController, UINavigationControllerDeleg
                     UIApplication.shared.endIgnoringInteractionEvents() //allow the user to interact with the screen again
                 } else {
                     alert.dismiss(animated: true, completion: nil)
-                    self.performSegue(withIdentifier: "deleteAccount", sender: self)
+                    self.performSegue(withIdentifier: "deleteAccount", sender: self) //go back to the login page
                     self.activityIndicator.stopAnimating()// if there is no error, stop animating the wait button
                     //and move on to the next window.
                     UIApplication.shared.endIgnoringInteractionEvents() //allow the user to interact with the screen again
@@ -145,9 +144,13 @@ class updateProfileViewController: UIViewController, UINavigationControllerDeleg
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        phoneNumber.resignFirstResponder()
+        phoneNumber.resignFirstResponder() //release the keyboard when the user touches to a random loaction
     }
     
+    /*
+     This create alert method presents an alert with a title presented on the top and message on the bottom,
+     usually for errors.
+     */
     
     func createAlert(title:String, message:String) {
         

@@ -11,28 +11,22 @@ import UIKit
 class WebViewController: UIViewController {
     
     
-    @IBOutlet weak var URLWindow: UIWebView!
+    @IBOutlet weak var URLWindow: UIWebView! //web view to show the link displayed in the uitableview
     
-    @IBOutlet weak var link: UITextView!
+    @IBOutlet weak var link: UITextView! //view for the user to copy the link to study
     
-    var myString = String()
-    var linked = "https://www.google.com"
+    var myString = String() //string that contains the website url
     
-    //label.text = myString
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        link.text = myString
+        link.text = myString //assign the link to the url from the UITableView
         
         if let url = URL(string: myString){
-            URLWindow.loadRequest(URLRequest(url: url))
-        } else {
-            let url = URL(string: linked)
-            URLWindow.loadRequest(URLRequest(url: url!))
+            URLWindow.loadRequest(URLRequest(url: url)) //load the URLRequest onto the webView
         }
-        
-        
         
     }
 
@@ -46,15 +40,5 @@ class WebViewController: UIViewController {
         performSegue(withIdentifier: "backFromURL", sender: self)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

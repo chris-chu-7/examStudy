@@ -58,18 +58,6 @@ class HelpViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    @nonobjc func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if(text == "\n") {
-            request.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-    
-    
-    
-    
     
     /*
      This create alert method presents an alert with a title presented on the top and message on the bottom,

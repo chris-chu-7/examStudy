@@ -17,8 +17,8 @@ class ManageClassesViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        classes = PFUser.current()?["Courses"] as! [String]
-        classList.reloadData()
+        classes = PFUser.current()?["Courses"] as! [String] //load all the classes from parse to an array
+        classList.reloadData() //reload the table so that it displays something
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,12 +27,12 @@ class ManageClassesViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func backToSettings(_ sender: Any) {
-        performSegue(withIdentifier: "doneManagingClasses", sender: self)
+        performSegue(withIdentifier: "doneManagingClasses", sender: self) //go back to the settings
     }
     
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return classes.count
+        return classes.count //Parse class count
     }
     
     
@@ -41,23 +41,30 @@ class ManageClassesViewController: UIViewController, UITableViewDelegate, UITabl
         
         cell.textLabel?.text = classes[indexPath.row]
         
-        return cell
+        return cell //take the array of the classes the user is enrolled into and return it into a cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
+        if editingStyle == .delete{ //have a delete option
             self.classes.remove(at: indexPath.row)
-            PFUser.current()?["Courses"] = classes
-            PFUser.current()?.saveInBackground(block: { (success, error) in
+            PFUser.current()?["Courses"] = classes //update the parse data
+            PFUser.current()?.saveInBackground(block: { (success, error) in //save
                 if error != nil{
                     self.createAlert(title: "Error", message: "Class not updated")
                 } else {
                     print("success:)")
                 }
             })
-            self.classList.reloadData()
+            self.classList.reloadData() //reload the table once deleted, also an error prevention key
         }
     }
+    
+    
+    /*
+     This create alert method presents an alert with a title presented on the top and message on the bottom,
+     usually for errors.
+     */
+    
     
     func createAlert(title:String, message:String) {
         

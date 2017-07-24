@@ -60,16 +60,16 @@ class SettingsTableViewController: UITableViewController {
         }
     
         if indexPath.row == 0 {
-            performSegue(withIdentifier: "settingsToHelp", sender: self)
+            performSegue(withIdentifier: "settingsToHelp", sender: self) //go to help page
         }
     
     if indexPath.row == 1{
-            performSegue(withIdentifier: "settingsToEdit", sender: self)
+            performSegue(withIdentifier: "settingsToEdit", sender: self) //edit profile
     
         }
     
     if indexPath.row == 3{
-        performSegue(withIdentifier: "manageClasses", sender: self)
+        performSegue(withIdentifier: "manageClasses", sender: self) //help the user manage his/her classes
     }
     
     }

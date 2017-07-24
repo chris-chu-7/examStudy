@@ -84,7 +84,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     @IBAction func goToDatabase(_ sender: Any) {
-        performSegue(withIdentifier: "toSearch", sender: self)
+        performSegue(withIdentifier: "toSearch", sender: self) //go to class search database
     }
     
     
@@ -235,7 +235,7 @@ class classDecisionViewController: UIViewController, UITableViewDelegate, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toWebView"{
            let webController = segue.destination as! WebViewController
-            webController.myString = link
+            webController.myString = link //prepare the web String to view in the next page
         }
         
             
